@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/lausellv/CFmyFlix-client/issues"
   },
-  "homepage": "https://github.com/lausellv/CFmyFlix-client#readme"
+  "homepage": "https://github.com/lausellv/CFmyFlix-client#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0-beta.3.1"
+  }
 }
