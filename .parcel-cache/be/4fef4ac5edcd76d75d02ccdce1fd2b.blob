@@ -1,0 +1,96 @@
+var helpers = require("../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieView", ()=>MovieView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+class MovieView extends _reactDefault.default.Component {
+    render() {
+        const { movie , onBack  } = this.propos;
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-view",
+            __source: {
+                fileName: "C:\\Users\\lechu\\Documents\\CFmyFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 7
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            classname: "movie-poster",
+            __source: {
+                fileName: "C:\\Users\\lechu\\Documents\\CFmyFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 8
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
+            src: movie.ImagePath,
+            __source: {
+                fileName: "C:\\Users\\lechu\\Documents\\CFmyFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 9
+            },
+            __self: this
+        })), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-title",
+            __source: {
+                fileName: "C:\\Users\\lechu\\Documents\\CFmyFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 11
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\lechu\\Documents\\CFmyFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 12
+            },
+            __self: this
+        }, "Title:"), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\lechu\\Documents\\CFmyFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 13
+            },
+            __self: this
+        }, movie.Title)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-description",
+            __source: {
+                fileName: "C:\\Users\\lechu\\Documents\\CFmyFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 15
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\lechu\\Documents\\CFmyFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 16
+            },
+            __self: this
+        }, "Description:"), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\lechu\\Documents\\CFmyFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 17
+            },
+            __self: this
+        }, movie.Description)), /*#__PURE__*/ _reactDefault.default.createElement("button", {
+            onClick: ()=>{
+                onBackClick(null);
+            },
+            __source: {
+                fileName: "C:\\Users\\lechu\\Documents\\CFmyFlix-client\\src\\components\\movie-view\\movie-view.jsx",
+                lineNumber: 19
+            },
+            __self: this
+        }, "Back")));
+    }
+}
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

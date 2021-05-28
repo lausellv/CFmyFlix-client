@@ -1,0 +1,31 @@
+var helpers = require("../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+class MovieCard extends _reactDefault.default.Component {
+    render() {
+        const { movie , onMovie  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-card",
+            __source: {
+                fileName: "C:\\Users\\lechu\\Documents\\CFmyFlix-client\\src\\components\\movie-card\\movie-card.jsx",
+                lineNumber: 6
+            },
+            __self: this
+        }, movie.Title));
+    }
+}
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
