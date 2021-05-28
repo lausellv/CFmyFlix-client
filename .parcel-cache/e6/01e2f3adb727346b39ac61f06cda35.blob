@@ -22033,8 +22033,7 @@ class MainView extends _reactDefault.default.Component {
                     Description: 'A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.',
                     ImagePath: 'https://m.media-amazon.com/images/M/MV5BMDliMmNhNDEtODUyOS00MjNlLTgxODEtN2U3NzIxMGVkZTA1L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX67_CR0,0,67,98_AL_.jpg'
                 }, 
-            ],
-            selectedMovie: null
+            ]
         };
     }
     setSelectedMovie(newSelectedMovie) {
@@ -22233,4 +22232,4 @@ class MovieView extends _reactDefault.default.Component {
 }
 },{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"wnRTU","../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4zI3T"}]},["1j6wU","1p33S","5oWa0"], "5oWa0", "parcelRequire415b")
 
-//# sourceMappingURL=index.fdbd6735.js.map
+//# sourceMappingURL=index.HASH_REF_489e911465028aad03fd1b39fdbd6735.js.map

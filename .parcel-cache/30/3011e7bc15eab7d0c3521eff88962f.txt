@@ -9,7 +9,7 @@
 98C:\Users\lechu\Documents\CFmyFlix-client\node_modules\@nodelib\fs.stat\out\providers\sync.d.ts.map121436361000000000 0
 102C:\Users\lechu\Documents\CFmyFlix-client\node_modules\react\cjs\react-jsx-dev-runtime.profiling.min.js121436361000000000 0
 73C:\Users\lechu\Documents\CFmyFlix-client\node_modules\fast-glob\README.md121436361000000000 0
-45C:\Users\lechu\Documents\CFmyFlix-client\dist132666178307223884 1
+45C:\Users\lechu\Documents\CFmyFlix-client\dist132666652780769627 1
 76C:\Users\lechu\Documents\CFmyFlix-client\node_modules\picomatch\package.json132662765278097363 0
 55C:\Users\lechu\Documents\CFmyFlix-client\src\components132666185930529826 1
 78C:\Users\lechu\Documents\CFmyFlix-client\node_modules\detect-libc\package.json132662765278107302 0
@@ -42,15 +42,15 @@
 67C:\Users\lechu\Documents\CFmyFlix-client\node_modules\scheduler\cjs132662755901305722 1
 84C:\Users\lechu\Documents\CFmyFlix-client\node_modules\fast-glob\out\utils\pattern.js121436361000000000 0
 64C:\Users\lechu\Documents\CFmyFlix-client\node_modules\micromatch132662765278432470 1
-79C:\Users\lechu\Documents\CFmyFlix-client\src\components\main-view\main-view.jsx132666176232995133 0
-81C:\Users\lechu\Documents\CFmyFlix-client\src\components\movie-view\movie-view.jsx132666193868000922 0
+79C:\Users\lechu\Documents\CFmyFlix-client\src\components\main-view\main-view.jsx132666652777677301 0
+81C:\Users\lechu\Documents\CFmyFlix-client\src\components\movie-view\movie-view.jsx132666647379558391 0
 89C:\Users\lechu\Documents\CFmyFlix-client\node_modules\@nodelib\fs.walk\src\tests\index.ts121436361000000000 0
 103C:\Users\lechu\Documents\CFmyFlix-client\node_modules\@nodelib\fs.scandir\out\adapters\fs.spec.d.ts.map121436361000000000 0
 100C:\Users\lechu\Documents\CFmyFlix-client\node_modules\@nodelib\fs.scandir\out\settings.spec.d.ts.map121436361000000000 0
 62C:\Users\lechu\Documents\CFmyFlix-client\node_modules\@nodelib132662765277037489 1
 94C:\Users\lechu\Documents\CFmyFlix-client\node_modules\@nodelib\fs.stat\src\adapters\fs.spec.ts121436361000000000 0
 74C:\Users\lechu\Documents\CFmyFlix-client\node_modules\path-type\index.d.ts121436361000000000 0
-81C:\Users\lechu\Documents\CFmyFlix-client\src\components\movie-card\movie-card.jsx132666178304144475 0
+81C:\Users\lechu\Documents\CFmyFlix-client\src\components\movie-card\movie-card.jsx132666620687446075 0
 96C:\Users\lechu\Documents\CFmyFlix-client\node_modules\@nodelib\fs.scandir\src\providers\async.ts121436361000000000 0
 60C:\Users\lechu\Documents\CFmyFlix-client\node_modules\globby132662765278432470 1
 89C:\Users\lechu\Documents\CFmyFlix-client\node_modules\@nodelib\fs.walk\out\tests\index.js121436361000000000 0
@@ -110,7 +110,7 @@
 66C:\Users\lechu\Documents\CFmyFlix-client\node_modules\loose-envify132662755902543478 1
 78C:\Users\lechu\Documents\CFmyFlix-client\node_modules\fastq\test\tsconfig.json121436361000000000 0
 60C:\Users\lechu\Documents\CFmyFlix-client\node_modules\merge2132662765278382642 1
-56C:\Users\lechu\Documents\CFmyFlix-client\dist\index.html132666178306560179 0
+56C:\Users\lechu\Documents\CFmyFlix-client\dist\index.html132666652780143058 0
 69C:\Users\lechu\Documents\CFmyFlix-client\node_modules\queue-microtask132662765278392600 1
 62C:\Users\lechu\Documents\CFmyFlix-client\node_modules\readdirp132662765278392600 1
 90C:\Users\lechu\Documents\CFmyFlix-client\node_modules\@nodelib\fs.walk\src\readers\sync.ts121436361000000000 0
@@ -441,7 +441,7 @@
 85C:\Users\lechu\Documents\CFmyFlix-client\node_modules\fast-glob\out\readers\stream.js121436361000000000 0
 85C:\Users\lechu\Documents\CFmyFlix-client\node_modules\fast-glob\out\readers\sync.d.ts121436361000000000 0
 88C:\Users\lechu\Documents\CFmyFlix-client\node_modules\fast-glob\out\providers\async.d.ts121436361000000000 0
-64C:\Users\lechu\Documents\CFmyFlix-client\dist\index.67b66361.css132666178306570175 0
+64C:\Users\lechu\Documents\CFmyFlix-client\dist\index.67b66361.css132666652780152740 0
 83C:\Users\lechu\Documents\CFmyFlix-client\node_modules\@nodelib\fs.stat\package.json132662765278107302 0
 85C:\Users\lechu\Documents\CFmyFlix-client\node_modules\fast-glob\out\providers\filters132662765274995569 1
 75C:\Users\lechu\Documents\CFmyFlix-client\node_modules\array-union\readme.md121436361000000000 0
@@ -497,7 +497,7 @@
 96C:\Users\lechu\Documents\CFmyFlix-client\node_modules\@nodelib\fs.scandir\out\providers\async.js121436361000000000 0
 82C:\Users\lechu\Documents\CFmyFlix-client\node_modules\binary-extensions\index.d.ts121436361000000000 0
 79C:\Users\lechu\Documents\CFmyFlix-client\node_modules\binary-extensions\license121436361000000000 0
-68C:\Users\lechu\Documents\CFmyFlix-client\dist\index.67b66361.css.map132666178306698681 0
+68C:\Users\lechu\Documents\CFmyFlix-client\dist\index.67b66361.css.map132666652780256818 0
 76C:\Users\lechu\Documents\CFmyFlix-client\node_modules\array-union\index.d.ts121436361000000000 0
 74C:\Users\lechu\Documents\CFmyFlix-client\node_modules\array-union\index.js121436361000000000 0
 92C:\Users\lechu\Documents\CFmyFlix-client\node_modules\@nodelib\fs.scandir\out\constants.d.ts121436361000000000 0
@@ -706,5 +706,5 @@
 75C:\Users\lechu\Documents\CFmyFlix-client\node_modules\.bin\loose-envify.ps1132662755902611781 0
 63C:\Users\lechu\Documents\CFmyFlix-client\node_modules\.bin\sass132662765278859892 0
 67C:\Users\lechu\Documents\CFmyFlix-client\node_modules\.bin\sass.cmd132662765278859892 0
-63C:\Users\lechu\Documents\CFmyFlix-client\dist\index.fdbd6735.js132666178306734568 0
-67C:\Users\lechu\Documents\CFmyFlix-client\dist\index.fdbd6735.js.map132666178306959413 0
+63C:\Users\lechu\Documents\CFmyFlix-client\dist\index.fdbd6735.js132666652780348898 0
+67C:\Users\lechu\Documents\CFmyFlix-client\dist\index.fdbd6735.js.map132666652780658419 0
