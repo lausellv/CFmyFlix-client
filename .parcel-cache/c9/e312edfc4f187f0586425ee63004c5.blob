@@ -22044,7 +22044,14 @@ class MainView extends _reactDefault.default.Component {
     }
     render() {
         const { movies , selectedMovie  } = this.state;
-        // if (selectedMovie) return <MovieView movie={selectedMovie} />;
+        if (selectedMovie) return(/*#__PURE__*/ _reactDefault.default.createElement(_movieView.MovieView, {
+            movie: selectedMovie,
+            __source: {
+                fileName: "C:\\Users\\lechu\\Documents\\CFmyFlix-client\\src\\components\\main-view\\main-view.jsx",
+                lineNumber: 26
+            },
+            __self: this
+        }));
         if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "main-view",
             __source: {
@@ -22226,4 +22233,4 @@ class MovieView extends _reactDefault.default.Component {
 }
 },{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"wnRTU","../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"4zI3T"}]},["1j6wU","1p33S","5oWa0"], "5oWa0", "parcelRequire415b")
 
-//# sourceMappingURL=index.fdbd6735.js.map
+//# sourceMappingURL=index.HASH_REF_489e911465028aad03fd1b39fdbd6735.js.map

@@ -16,5 +16,5 @@ class MyFlixApplication extends React.Component {
 // finds the root of the application
 const container = document.getElementsByClassName('app-container')[0];
 
-// tells React to render your app in the root DOM element
+// tells React to render your app in the root DOM element container
 ReactDOM.render(React.createElement(MyFlixApplication), container);
