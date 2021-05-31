@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.html",
-  "scripts": {
-    
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lausellv/CFmyFlix-client.git"
