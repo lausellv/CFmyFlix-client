@@ -43,7 +43,7 @@ export default class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie } = this.state;
+    const { movies, selectedMovie } = this.state;  // same as const movies = this.state.movies & const selecteMovie = this.state.selectedMovie (ES6 object destructuring)
     // if (selectedMovie) return <MovieView movie={selectedMovie} />;
     if (movies.length === 0) {
       return <div className="main-view">This list is empty!</div>;
