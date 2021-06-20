@@ -1,0 +1,115 @@
+import React from "react";
+import axios from "axios";
+
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
+import { LoginView } from "../login-view/login-view";
+import { RegistrationView } from "../registration-view/registration-view";
+import { MovieCard } from "../movie-card/movie-card";
+import { MovieView } from "../movie-view/movie-view";
+
+import "./main-view.scss";
+
+export default class MainView extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      movies: [],
+      selectedMovie: null,
+      user: null
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get("https://cf-my-movie-app.herokuapp.com/movies")
+      .then(response => {
+        this.setState({ movies: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  /*Upon clicking on a movie, the state is updated to it */
+  setSelectedMovie(newSelectedMovie) {
+    this.setState({
+      selectedMovie: newSelectedMovie
+    });
+  }
+
+  /*Method on which upon login in, the state is updated to such user */
+  onLoggedIn(user) {
+    this.setState({ user: user });
+  }
+
+  onRegister(register) {
+    this.setState({ register: register });
+  }
+
+  onBackClick() {
+    this.setState({
+      selectedMovie: null
+    });
+  }
+
+  toggleRegister = e => {
+    e.preventDefault();
+    this.setState({
+      register: !this.state.register
+    });
+  };
+
+  render() {
+    const { movies, selectedMovie, register } = this.state; // same as const movies = this.state.movies & const selecteMovie = this.state.selectedMovie (ES6 object destructuring)
+    if (register) return <RegistrationView onRegister={register => this.onRegister(register)} toggleRegister={this.toggleRegister} />;
+
+    if (this.state.user === null) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} toggleRegister={this.toggleRegister} />;
+
+    if (movies.length === 0)  return <div className="main-view" />;
+    return (
+      <div className="main-view">
+        {selectedMovie
+          ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+          : movies.map(movie => (
+            <MovieCard key={movie._id} movieData={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }} />
+          ))
+        }
+      </div>
+    );
+    
+      // return (
+      //   <div className="main-view">
+      //     {/* two views - if the state of selected movie is NOT null, movie selected will be shown. Otherwise, list of movies is shown*/}
+      //     {selectedMovie ? (
+      //       <Row className="justify-content-md-center">
+      //         <Col md={8}>
+      //           <MovieView
+      //             movieData={selectedMovie}
+      //             onBackClick={newSelectedMovie => {
+      //               this.setSelectedMovie(newSelectedMovie);
+      //             }}
+      //           />
+      //         </Col>
+      //       </Row>
+      //     ) : (
+      //       movies.map(movie => (
+      //         <MovieCard
+      //           key={movie._id}
+      //           movieData={movie}
+      //           onMovieClick={movie => {
+      //             this.setSelectedMovie(movie);
+      //           }}
+      //         />
+      //       ))
+      //     )}
+      //   </div>
+      // );
+    
+  }
+
+  // componentWillUnmount(){
+  //   document.removeEventListener('keypress', this.keypressCallback)
+  // }
+}
