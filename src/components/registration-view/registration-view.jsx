@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import { propTypes } from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Form } from "react-bootstrap"
 
 import "./registration-view.scss";
 
@@ -21,7 +22,6 @@ export function RegistrationView(props) {
     props.onRegister(username);
     const isValid = formValidation();
     if (isValid) {
-      console.log("isValidstatement===", isValid);
 
       axios
         .post("https://cf-my-movie-app.herokuapp.com/users", {
@@ -35,43 +35,44 @@ export function RegistrationView(props) {
           console.log(data);
         })
         .catch(e => {
-          console.log("error in user registration");
+          console.log("error in user registration", e);
         });
       console.log(username, password, email, birthdate);
       props.onRegister(username);
     }
+  }
 
-    const formValidation = () => {
-      const usernameError = {};
-      const passwordError = {};
-      const emailError = {};
-      let isValid = true;
+  const formValidation = () => {
+    const usernameError = {};
+    const passwordError = {};
+    const emailError = {};
+    let isValid = true;
 
-      if (username.trim().length < 5) {
-        usernameError.usernameShort = "Username must be at least 5 characters";
-        isValid = false;
-      }
+    if (username.trim().length < 5) {
+      usernameError.usernameShort = "Username must be at least 5 characters";
+      isValid = false;
+    }
 
-      if (password.trim().length === 0) {
-        passwordError.passwordMissing = "Password is required";
-        isValid = false;
-      }
+    if (password.trim().length === 0) {
+      passwordError.passwordMissing = "Password is required";
+      isValid = false;
+    }
 
-      if (password.trim().length < 6) {
-        passwordError.passwordMissing = "Password must be at least 6 characters";
-        isValid = false;
-      }
+    if (password.trim().length < 6) {
+      passwordError.passwordMissing = "Password must be at least 6 characters";
+      isValid = false;
+    }
 
-      if (!email.includes(".") && !email.includes("@")) {
-        emailError.notEmail = "Enter a valid email";
-        isValid = false;
-      }
+    if (!email.includes(".") && !email.includes("@")) {
+      emailError.notEmail = "Enter a valid email";
+      isValid = false;
+    }
 
-      setUsernameError(usernameError);
-      setPasswordError(passwordError);
-      setEmailError(emailError);
-      return isValid;
-    };
+    setUsernameError(usernameError);
+    setPasswordError(passwordError);
+    setEmailError(emailError);
+    return isValid;
+  };
 
     return (
       <div className="registration-view">
@@ -80,11 +81,11 @@ export function RegistrationView(props) {
             <span className="font-weight-bold">myFlixApp</span>
           </h1>
           <h2 className="text-center"> Sign up</h2>
-<Form.Group>
-          <label>
-            Username:
-            <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-          </label>
+          <Form.Group>
+            <label>
+              Username:
+              <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
+            </label>
           </Form.Group>
           <label>
             Create Password:
@@ -109,7 +110,6 @@ export function RegistrationView(props) {
         </Form>
       </div>
     );
-  };
 }
 
 // RegistrationView.propTypes = {

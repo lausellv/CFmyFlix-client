@@ -9,7 +9,7 @@ export class MovieView extends React.Component {
 
   render() {
     const { movieData, onBackClick } = this.props;
-
+    console.log(movieData)
     return (
       <div className="movie-view">
         <div className="movie-poster">
@@ -31,8 +31,9 @@ export class MovieView extends React.Component {
        
         </div>
         <div className="movie-genre">
-          <span className="label">Genre: </span>
-          <span className="value">{movieData.Genre.Name}   {"Description: "} {movieData.Genre.Description }</span>
+          <div className="label">{`Genre: ${movieData.Genre.Name}`}</div>
+          {/* TODO */}
+          <div className="value">{"Description: "} {movieData.Genre.Description }</div>
           
         </div>
         
