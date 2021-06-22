@@ -72,10 +72,10 @@ export function LoginView(props) {
         <Form.Label>Password:</Form.Label>
         <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
       </Form.Group>
-      <Button variant="primary" type="submit" onClick={handleSubmit}>
+      <Button variant="outline-secondary" type="submit" onClick={handleSubmit}>
         Submit
       </Button>
-      <Button variant="primary" type="secondary" onClick={props.toggleRegister}>
+      <Button variant="outline-secondary" type="secondary" onClick={props.toggleRegister}>
         Register
       </Button>
     </Form>
@@ -85,11 +85,11 @@ export function LoginView(props) {
 export function Button({ label }) {
   return <button className="login-button">{label}</button>;
 }
-// LoginView.propTypes = {
-//   user: PropTypes.shape({
-//     username: PropTypes.string.isRequired,
-//     password: PropTypes.string.isRequired
-//   }),
-//   onLoggedIn: PropTypes.func.isRequired,
-//   onRegister: PropTypes.func
-// };
+LoginView.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired
+  }),
+  onLoggedIn: PropTypes.func.isRequired,
+  onRegister: PropTypes.func
+};

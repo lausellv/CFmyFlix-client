@@ -4,6 +4,7 @@ import { propTypes } from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Form } from "react-bootstrap"
+import Button from "react-bootstrap/Button"
 
 import "./registration-view.scss";
 
@@ -73,6 +74,7 @@ export function RegistrationView(props) {
     setEmailError(emailError);
     return isValid;
   };
+  
 
     return (
       <div className="registration-view">
@@ -96,16 +98,16 @@ export function RegistrationView(props) {
             </label>
           </label>
           <span>
-            <button type="submit" onClick={handleSubmit}>
+            <Button variant="light" type="submit" onClick={handleSubmit}>
               SUBMIT
-            </button>
-            <button
+            </Button>
+            <Button variant="light"
               onClick={() => {
                 onBackClick(null);
               }}
             >
               BACK
-            </button>
+            </Button>
           </span>
         </Form>
       </div>

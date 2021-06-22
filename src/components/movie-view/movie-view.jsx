@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Button from "react-bootstrap/Button";
 
 export class MovieView extends React.Component {
   constructor() {
@@ -9,7 +10,7 @@ export class MovieView extends React.Component {
 
   render() {
     const { movieData, onBackClick } = this.props;
-    console.log(movieData)
+    console.log(movieData);
     return (
       <div className="movie-view">
         <div className="movie-poster">
@@ -23,49 +24,45 @@ export class MovieView extends React.Component {
           <span className="label">Description: </span>
           <span className="value">{movieData.Description}</span>
         </div>
-        
-         <div className="movie-director">
-          <span className="label">Director: </span>
-          <span className="value">{movieData.Director.Name}</span>
-          <span className="value">{" Bio: "}{movieData.Director.Bio}  {" Birth: "} {Math.round(movieData.Director.Birth)}</span>
-       
+
+        <div className="movie-director">
+          <div className="label">{`Director: ${movieData.Director.Name}`}</div>
+          <div className="value">{`Bio: ${movieData.Director.Bio} Birth: ${parseInt(movieData.Director.Birth)}`}</div>
         </div>
         <div className="movie-genre">
           <div className="label">{`Genre: ${movieData.Genre.Name}`}</div>
-          {/* TODO */}
-          <div className="value">{"Description: "} {movieData.Genre.Description }</div>
-          
+          <div className="value">{`Description: ${movieData.Genre.Description}`}</div>
+         
         </div>
-        
 
-       
-        <button
-          className="super-button"
-          onClick={() => {
-            onBackClick(null);
-          }}
-        >
-          Back
-        </button>
+        <Button
+         variant="outline-secondary"
+            onClick={() => {
+              onBackClick(null);
+            }}
+          >
+            BACK
+          </Button>
+          
       </div>
     );
   }
 }
 
-//  MovieView.propTypes = {
-//   movieData: PropTypes.shape({
-//     Title: PropTypes.string.isRequired,
-//     Description: PropTypes.string.isRequired,
-//     ImagePath: PropTypes.string.isRequired,
-//     Genre: PropTypes.shape({
-//       Name: PropTypes.string.isRequired,
-//       Description: PropTypes.string.isRequired
-//     }),
-//     Director: PropTypes.shape({
-//       Name: PropTypes.string.isRequired,
-//       Bio: PropTypes.string.isRequired,
-//       Birth: PropTypes.number.isRequired
-//     })
-//   }).isRequired,
-//   onClick: PropTypes.func
-//  };
+MovieView.propTypes = {
+  movieData: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired
+    }),
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      Birth: PropTypes.number.isRequired
+    })
+  }).isRequired,
+  onClick: PropTypes.func
+};

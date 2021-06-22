@@ -79,37 +79,9 @@ export default class MainView extends React.Component {
       </div>
     );
     
-      // return (
-      //   <div className="main-view">
-      //     {/* two views - if the state of selected movie is NOT null, movie selected will be shown. Otherwise, list of movies is shown*/}
-      //     {selectedMovie ? (
-      //       <Row className="justify-content-md-center">
-      //         <Col md={8}>
-      //           <MovieView
-      //             movieData={selectedMovie}
-      //             onBackClick={newSelectedMovie => {
-      //               this.setSelectedMovie(newSelectedMovie);
-      //             }}
-      //           />
-      //         </Col>
-      //       </Row>
-      //     ) : (
-      //       movies.map(movie => (
-      //         <MovieCard
-      //           key={movie._id}
-      //           movieData={movie}
-      //           onMovieClick={movie => {
-      //             this.setSelectedMovie(movie);
-      //           }}
-      //         />
-      //       ))
-      //     )}
-      //   </div>
-      // );
+    
     
   }
 
-  // componentWillUnmount(){
-  //   document.removeEventListener('keypress', this.keypressCallback)
-  // }
+  
 }
