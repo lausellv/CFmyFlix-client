@@ -10,12 +10,12 @@ import "./login-view.scss";
 export function LoginView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [usernameError, setUsernameError] = useState({});
-  // const [passwordError, setPasswordError] = useState({});
+  const [usernameError, setUsernameError] = useState({});
+  const [passwordError, setPasswordError] = useState({});
 
   const handleSubmit = e => {
     e.preventDefault();
-    // const isValid = formValidation();
+    const isValid = formValidation();
     console.log(username, password);
     /* requesting authentication */
     /*calling props.onLoggedIn(username)*/
@@ -35,30 +35,31 @@ export function LoginView(props) {
           console.log("no such user");
         });
     }
-    const formValidation = () => {
-      const usernameError = {};
-      const passwordError = {};
-      let isValid = true;
+  };
 
-      if (username.trim().length < 5) {
-        usernameError.usernameShort = "Username must be at least 5 characters";
-        isValid = false;
-      }
+  const formValidation = () => {
+    const usernameError = {};
+    const passwordError = {};
+    let isValid = true;
 
-      if (password.trim().length === 0) {
-        passwordError.passwordRequired = "Password is required";
-        isValid = false;
-      }
+    if (username.trim().length < 5) {
+      usernameError.usernameShort = "Username must be at least 5 characters";
+      isValid = false;
+    }
 
-      if (password.trim().length < 6) {
-        passwordError.passwordMissing = "Password must be at least 6 characters";
-        isValid = false;
-      }
+    if (password.trim().length === 0) {
+      passwordError.passwordRequired = "Password is required";
+      isValid = false;
+    }
 
-      setUsernameError(usernameError);
-      setPasswordError(passwordError);
-      return isValid;
-    };
+    if (password.trim().length < 6) {
+      passwordError.passwordMissing = "Password must be at least 6 characters";
+      isValid = false;
+    }
+
+    setUsernameError(usernameError);
+    setPasswordError(passwordError);
+    return isValid;
   };
 
   return (
