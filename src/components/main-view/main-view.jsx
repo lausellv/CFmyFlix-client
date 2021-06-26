@@ -48,7 +48,7 @@ export default class MainView extends React.Component {
     this.setState({ register: register });
   }
 
-  onBackClick() {
+  onBackClick = () => {
     this.setState({
       selectedMovie: null
     });
@@ -77,11 +77,7 @@ export default class MainView extends React.Component {
           ))
         }
       </div>
-    );
-    
-    
+    ); 
     
   }
-
-  
 }
