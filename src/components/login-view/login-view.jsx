@@ -82,14 +82,14 @@ export function LoginView(props) {
   );
 }
 
-export function Button({ label }) {
-  return <button className="login-button">{label}</button>;
-}
-LoginView.propTypes = {
-  user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired
-  }),
-  onLoggedIn: PropTypes.func.isRequired,
-  onRegister: PropTypes.func
-};
+// export function Button({ label }) {
+//   return <button className="login-button">{label}</button>;
+// }
+// LoginView.propTypes = {
+//   user: PropTypes.shape({
+//     username: PropTypes.string.isRequired,
+//     password: PropTypes.string.isRequired
+//   }),
+//   onLoggedIn: PropTypes.func.isRequired,
+//   onRegister: PropTypes.func
+// };
