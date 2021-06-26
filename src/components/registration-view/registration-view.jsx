@@ -21,7 +21,7 @@ export function RegistrationView(props) {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(username, password, email, birthdate);
-    props.onRegister(username);
+    // props.onRegister(username);
 
     const isValid = formValidation();
     if (isValid) {
@@ -37,6 +37,7 @@ export function RegistrationView(props) {
           const data = response.data;
           console.log(data);
           setRegRes({ text: "registration successful", variant: "success" })
+
         })
         .catch(e => {
           setRegRes({ text: "registration error blah", variant: "danger" })
@@ -81,10 +82,6 @@ export function RegistrationView(props) {
     return isValid;
   };
 
-  const onBackClick = () => {
-   setSelectedMovie = null;
-  }
-
 
   return (
     <div className="registration-view">
@@ -116,9 +113,7 @@ export function RegistrationView(props) {
             SUBMIT
           </Button>
           <Button variant="light"
-            onClick={() => {
-              onBackClick();
-            }}
+            onClick={props.toggleRegister}
           >
             LOGIN
           </Button>
