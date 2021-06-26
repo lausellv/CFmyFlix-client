@@ -24,8 +24,6 @@ export function RegistrationView(props) {
     props.onRegister(username);
 
     const isValid = formValidation();
-
-
     if (isValid) {
 
       axios
