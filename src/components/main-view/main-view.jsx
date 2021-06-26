@@ -63,15 +63,15 @@ export default class MainView extends React.Component {
 
   render() {
     const { movies, selectedMovie, register } = this.state; // same as const movies = this.state.movies & const selecteMovie = this.state.selectedMovie (ES6 object destructuring)
-    if (register) return <RegistrationView onRegister={register => this.onRegister(register)} toggleRegister={this.toggleRegister} />;
-
-    if (this.state.user === null) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} toggleRegister={this.toggleRegister} />;
+    if (register) return <RegistrationView onRegister={register => this.onRegister(register)} toggleRegister={this.toggleRegister} onBackClick={this.onBackClick} />;
+    if (!this.state.user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} toggleRegister={this.toggleRegister} />;
 
     if (movies.length === 0)  return <div className="main-view" />;
     return (
       <div className="main-view">
         {selectedMovie
-          ? <MovieView movieData={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+          ? <MovieView movieData={selectedMovie} onBackClick={this.onBackClick} />
+  
           : movies.map(movie => (
             <MovieCard key={movie._id} movieData={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }} />
           ))
