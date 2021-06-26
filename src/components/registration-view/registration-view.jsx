@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import render  from "react-dom";
-import  propTypes  from "prop-types";
+import render from "react-dom";
+import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Form } from "react-bootstrap"
+import { Form, Alert } from "react-bootstrap"
 import Button from "react-bootstrap/Button"
 
 import "./registration-view.scss";
@@ -16,18 +16,16 @@ export function RegistrationView(props) {
   const [usernameError, setUsernameError] = useState({});
   const [passwordError, setPasswordError] = useState({});
   const [emailError, setEmailError] = useState({});
+  const [regRes, setRegRes] = useState(null)
 
   const handleSubmit = e => {
     e.preventDefault();
     console.log(username, password, email, birthdate);
     props.onRegister(username);
 
-  
-
-    
     const isValid = formValidation();
 
-    
+
     if (isValid) {
 
       axios
@@ -40,8 +38,10 @@ export function RegistrationView(props) {
         .then(response => {
           const data = response.data;
           console.log(data);
+          setRegRes({ text: "registration successful", variant: "success" })
         })
         .catch(e => {
+          setRegRes({ text: "registration error blah", variant: "danger" })
           console.log("error in user registration", e);
         });
       console.log(username, password, email, birthdate);
@@ -55,7 +55,7 @@ export function RegistrationView(props) {
     const emailError = {};
     let isValid = true;
 
-    
+
 
     if (username.trim().length < 5) {
       usernameError.usernameShort = "Username must be at least 5 characters";
@@ -83,53 +83,58 @@ export function RegistrationView(props) {
     return isValid;
   };
 
-  const onBackClick = () =>{
-    props.onRegister()
+  const onBackClick = () => {
+   setSelectedMovie = null;
   }
-  
 
-    return (
-      <div className="registration-view">
-        <Form className="form-registration">
-          <h1>
-            <span className="font-weight-bold">myFlixApp</span>
-          </h1>
-          <h2 className="text-center"> Sign up</h2>
-          <Form.Group>
-            <label>
-              Username:
-              <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-            </label>
-          </Form.Group>
+
+  return (
+    <div className="registration-view">
+      <div>{props.happy}</div>
+      {regRes && <Alert variant={regRes.variant}>
+        <Alert.Heading>{regRes.text}</Alert.Heading>
+      </Alert>}
+      <Form className="form-registration">
+        <h1>
+          <span className="font-weight-bold">myFlixApp</span>
+        </h1>
+        <h2 className="text-center"> Sign up</h2>
+        <Form.Group>
           <label>
-            Create Password:
-            <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-            <label>
-              Email:
-              <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-            </label>
+            Username:
+            <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
           </label>
-          <span>
-            <Button variant="light" type="submit" onClick={handleSubmit}>
-              SUBMIT
-            </Button>
-            <Button variant="light"
-              onClick={() => {
-                onBackClick(null);
-              }}
-            >
-              BACK
-            </Button>
-          </span>
-        </Form>
-      </div>
-    );
+        </Form.Group>
+        <label>
+          Create Password:
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+          <label>
+            Email:
+            <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+          </label>
+        </label>
+        <span>
+          <Button variant="light" type="submit" onClick={handleSubmit}>
+            SUBMIT
+          </Button>
+          <Button variant="light"
+            onClick={() => {
+              onBackClick();
+            }}
+          >
+            LOGIN
+          </Button>
+        </span>
+      </Form>
+    </div>
+  );
+
 }
 
-// RegistrationView.propTypes = {
-//   user: PropTypes.shape({
-//     username: PropTypes.string.isRequired,
-//     password: PropTypes.string.isRequired
-//   }),
-//   onRegister: PropTypes.func.isRequired
-// };
+RegistrationView.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired
+  }),
+  onRegister: PropTypes.func.isRequired
+};
