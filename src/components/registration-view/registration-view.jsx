@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { render } from "react-dom";
-import { propTypes } from "prop-types";
+import render  from "react-dom";
+import  propTypes  from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Form } from "react-bootstrap"
@@ -21,7 +21,13 @@ export function RegistrationView(props) {
     e.preventDefault();
     console.log(username, password, email, birthdate);
     props.onRegister(username);
+
+  
+
+    
     const isValid = formValidation();
+
+    
     if (isValid) {
 
       axios
@@ -49,6 +55,8 @@ export function RegistrationView(props) {
     const emailError = {};
     let isValid = true;
 
+    
+
     if (username.trim().length < 5) {
       usernameError.usernameShort = "Username must be at least 5 characters";
       isValid = false;
@@ -74,6 +82,10 @@ export function RegistrationView(props) {
     setEmailError(emailError);
     return isValid;
   };
+
+  const onBackClick = () =>{
+    props.onRegister()
+  }
   
 
     return (
