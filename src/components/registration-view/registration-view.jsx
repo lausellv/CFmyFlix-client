@@ -3,8 +3,8 @@ import render from "react-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Form, Alert } from "react-bootstrap"
-import Button from "react-bootstrap/Button"
+import { Form, Alert } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 import "./registration-view.scss";
 
@@ -16,7 +16,7 @@ export function RegistrationView(props) {
   const [usernameError, setUsernameError] = useState({});
   const [passwordError, setPasswordError] = useState({});
   const [emailError, setEmailError] = useState({});
-  const [regRes, setRegRes] = useState(null)
+  const [regRes, setRegRes] = useState(null);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -25,7 +25,6 @@ export function RegistrationView(props) {
 
     const isValid = formValidation();
     if (isValid) {
-
       axios
         .post("https://cf-my-movie-app.herokuapp.com/users", {
           Username: username,
@@ -36,25 +35,22 @@ export function RegistrationView(props) {
         .then(response => {
           const data = response.data;
           console.log(data);
-          setRegRes({ text: "registration successful", variant: "success" })
-
+          setRegRes({ text: "registration successful", variant: "success" });
         })
         .catch(e => {
-          setRegRes({ text: "registration error blah", variant: "danger" })
+          setRegRes({ text: "registration error", variant: "danger" });
           console.log("error in user registration", e);
         });
       console.log(username, password, email, birthdate);
       props.onRegister(username);
     }
-  }
+  };
 
   const formValidation = () => {
     const usernameError = {};
     const passwordError = {};
     const emailError = {};
     let isValid = true;
-
-
 
     if (username.trim().length < 5) {
       usernameError.usernameShort = "Username must be at least 5 characters";
@@ -82,46 +78,75 @@ export function RegistrationView(props) {
     return isValid;
   };
 
-
   return (
     <div className="registration-view">
-      <div>{props.happy}</div>
-      {regRes && <Alert variant={regRes.variant}>
-        <Alert.Heading>{regRes.text}</Alert.Heading>
-      </Alert>}
-      <Form className="form-registration">
+      {regRes && (
+        <Alert variant={regRes.variant}>
+          <Alert.Heading>{regRes.text}</Alert.Heading>
+        </Alert>
+      )}
+      <Form className="registration-form">
         <h1>
           <span className="font-weight-bold">myFlixApp</span>
         </h1>
         <h2 className="text-center"> Sign up</h2>
-        <Form.Group>
-          <label>
-            Username:
-            <input type="text" placeholder="5 characters min" required value={username} onChange={e => setUsername(e.target.value)} />
-          </label>
+        <Form.Group controlId="formUsername">
+          <Form.Label>Username:</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="enter username"
+            required
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+          />
+          <Form.Control.Feedback type="invalid">
+            Please provide a valid username{" "}
+          </Form.Control.Feedback>
         </Form.Group>
-        <label>
-          Create Password: 
-          <input type="password" placeholder="6 characters min" required value={password} onChange={e => setPassword(e.target.value)} />
-          <label>
-            Email:
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-          </label>
-        </label>
+        <Form.Group controlId="formPassword">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="6 characters min"
+            required
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+          <Form.Control.Feedback type="invalid">
+            Please provide a valid password.
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group controlId="formEmail">
+          <Form.Label>Email:</Form.Label>
+          <input
+            type="email"
+            placeholder="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Form.Group controlId="formBirthdate">
+          <Form.Label>Birthdate:</Form.Label>
+          <input
+            type="date"
+            placeholder="00-00-0000"
+            value={birthdate}
+            onChange={e => setBirthdate(e.target.value)}
+            required
+          />
+        </Form.Group>
         <span>
           <Button variant="light" type="submit" onClick={handleSubmit}>
             SUBMIT
           </Button>
-          <Button variant="light"
-            onClick={props.toggleRegister}
-          >
+          <Button variant="light" onClick={props.toggleRegister}>
             LOGIN
           </Button>
         </span>
       </Form>
     </div>
   );
-
 }
 
 RegistrationView.propTypes = {
