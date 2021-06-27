@@ -1,4 +1,11 @@
-node_modules
-.cache
-.parcel-cache
-dist
+node_modules/
+.cache/
+.parcel-cache/
+# editors
+.vs/
+.vscode/
+.DS_Store
+# binaries
+bin/
+dist/
+lib/
