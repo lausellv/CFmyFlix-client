@@ -3,8 +3,8 @@ import render from "react-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Form, Alert } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+import { Form, Alert, Button } from "react-bootstrap";
+
 
 import "./registration-view.scss";
 
@@ -79,13 +79,12 @@ export function RegistrationView(props) {
   };
 
   return (
-    <div className="registration-view">
-      {regRes && (
+      <Form className="registration-form">
+          {regRes && (
         <Alert variant={regRes.variant}>
           <Alert.Heading>{regRes.text}</Alert.Heading>
         </Alert>
       )}
-      <Form className="registration-form">
         <h1>
           <span className="font-weight-bold">myFlixApp</span>
         </h1>
@@ -145,7 +144,7 @@ export function RegistrationView(props) {
           </Button>
         </span>
       </Form>
-    </div>
+    
   );
 }
 

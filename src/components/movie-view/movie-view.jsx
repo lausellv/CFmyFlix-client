@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
+import { Card, Button } from "react-bootstrap";
+
+import "./movie-view.scss"
 
 export class MovieView extends React.Component {
   constructor() {
@@ -12,40 +14,35 @@ export class MovieView extends React.Component {
     const { movieData, onBackClick } = this.props;
     console.log(movieData);
     return (
-      <div className="movie-view">
-        <div className="movie-poster">
-          <img src={movieData.ImagePath} />
-        </div>
-        <div className="movie-title">
-          <span className="label">Title: </span>
-          <span className="value">{movieData.Title}</span>
-        </div>
-        <div className="movie-year">
-          <span className="label">Year Released: </span>
-          <span className="value">{movieData.Release_Year}</span>
-        </div>
-        <div className="movie-description">
-          <div className="label">Description: </div>
-          <div className="value">{movieData.Description}</div>
-        </div>
+      <Card border="light" className="mt-3">
+        <Card.Img variant="top" src={movieData.ImagePath} />
+        <Card.Body>
+          <Card.Title>
+            <span className="value">{movieData.Title}</span>
+          </Card.Title>
+          <Card.Subtitle>
+            <span>YEAR: {movieData.Release_Year}</span>
+          </Card.Subtitle>
+          <Card.Text>
+            <span className="value">{movieData.Description}</span>
+          </Card.Text>
 
-        <div className="movie-director">
-          <div className="label">{`Director: ${movieData.Director.Name}`}</div>
-          <div className="value">{`Bio: ${movieData.Director.Bio} Birth: ${movieData.Director.Birth}`}</div>
-        </div>
-        <div className="movie-genre">
-          <div className="label">{`Genre: ${movieData.Genre.Name}`}</div>
-          <div className="value">{`Description: ${movieData.Genre.Description}`}</div>
-        </div>
+          <Card.Subtitle>
+            <span>DIRECTOR: {movieData.Director.Name}</span>
+          </Card.Subtitle>
 
-        <Button
-         variant="outline-info"
-            onClick={onBackClick}
-          >
+           <Card.Text><span className="value">{`Bio: ${movieData.Director.Bio} Birth: ${movieData.Director.Birth}`}</span></Card.Text>
+           <Card.Subtitle>
+            <span>GENRE: {movieData.Genre.Name}</span>
+          </Card.Subtitle>
+          <Card.Text><span className="value">{movieData.Genre.Description}</span></Card.Text>
+
+
+          <Button className="super-button" variant="outline-info" onClick={onBackClick}>
             BACK
           </Button>
-          
-      </div>
+        </Card.Body>
+      </Card>
     );
   }
 }
