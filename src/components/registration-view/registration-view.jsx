@@ -137,10 +137,10 @@ export function RegistrationView(props) {
           />
         </Form.Group>
         <span>
-          <Button variant="light" type="submit" onClick={handleSubmit}>
+          <Button className="super-button" variant="outline-info" type="submit" onClick={handleSubmit}>
             SUBMIT
           </Button>
-          <Button variant="light" onClick={props.toggleRegister}>
+          <Button className="super-button" variant="outline-info" onClick={props.toggleRegister}>
             LOGIN
           </Button>
         </span>

@@ -72,11 +72,11 @@ export function LoginView(props) {
         <Form.Label>Password:</Form.Label>
         <Form.Control type="password" required onChange={e => setPassword(e.target.value)} />
       </Form.Group>
-      <Button variant="outline-secondary" type="submit" onClick={handleSubmit}>
-        Submit
+      <Button className="super-button" variant="outline-info" type="submit" onClick={handleSubmit}>
+        SUBMIT
       </Button>
-      <Button variant="outline-secondary" type="secondary" onClick={props.toggleRegister}>
-        Register
+      <Button className="super-button" variant="outline-info" type="secondary" onClick={props.toggleRegister}>
+        REGISTER
       </Button>
     </Form>
   );
