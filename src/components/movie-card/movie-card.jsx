@@ -14,7 +14,7 @@ export class MovieCard extends React.Component {
           <Card.Text>{movieData.Description}</Card.Text>
           <Button
             onClick={() => onMovieClick(movieData)}
-            variant="outline-secondary"
+            variant="outline-info"
           >
             MORE INFO
           </Button>

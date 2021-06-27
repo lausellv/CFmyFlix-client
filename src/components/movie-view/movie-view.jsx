@@ -39,7 +39,7 @@ export class MovieView extends React.Component {
         </div>
 
         <Button
-         variant="outline-secondary"
+         variant="outline-info"
             onClick={onBackClick}
           >
             BACK

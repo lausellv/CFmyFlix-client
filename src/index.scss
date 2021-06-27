@@ -1,5 +1,22 @@
-$color: #525b62;
+$color:#17A2B8;
+$primary-grey:rgba(216, 216, 216, 0.788);
+$color-font:rgba(7, 7, 7, 0.973);
 
-.my-flix {
-  color: $color;
+
+.my-flix{
+    color:$color;
+    font-weight:400px;
+}
+
+.app-container{
+    background-color:#eeeeee;
+    height: auto;
+   // padding-top: 40px;
+}
+.login-form h2{
+    color: $color-font;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 10px;
+    
 }
