@@ -17,20 +17,22 @@ export default class MainView extends React.Component {
     this.state = {
       movies: [],
       selectedMovie: null,
-      user: null
+      user: null,
+      key: {}
     };
   }
 
   componentDidMount() {
-    axios
-      .get("https://cf-my-movie-app.herokuapp.com/movies")
-      .then(response => {
-        this.setState({ movies: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    let accessToken = localStorage.getItem('token');
+    if(accessToken !== null){
+        this.setState({
+            user:localStorage.getItem('user')
+        });
+        this.getMovies(accessToken);
   }
+}
+
+ 
 
   /*Upon clicking on a movie, the state is updated to it */
   setSelectedMovie(newSelectedMovie) {
@@ -40,9 +42,26 @@ export default class MainView extends React.Component {
   }
 
   /*Method on which upon login in, the state is updated to such user */
-  onLoggedIn(user) {
-    this.setState({ user: user });
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({ user: authData.user.Username });
+    localStorage.setItem('token',authData.token);
+           localStorage.setItem('user',authData.user.Username);
+    
   }
+
+  getMovies(token){
+    axios.get('https://cf-my-movie-app.herokuapp.com/movies',{
+        headers:{ Authorization: `Bearer ${token}`}
+    })
+    .then(response=> {
+       // assign result to the state
+       this.setState({movies:response.data});
+     })
+    .catch(function(error){
+        console.log(error)
+    })
+}
 
   onRegister(register) {
     this.setState({ register: register });
