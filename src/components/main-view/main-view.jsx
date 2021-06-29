@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 
 import {Row, Col, Button} from "react-bootstrap";
 
@@ -93,35 +94,35 @@ export default class MainView extends React.Component {
         />
       );
     if (!this.state.user)
-      return (
+      return ( <Row><Col>
         <LoginView
           onLoggedIn={user => this.onLoggedIn(user)}
           toggleRegister={this.toggleRegister}
-        />
+        /></Col></Row>
       );
 
     if (movies.length === 0) return <div className="main-view" />;
     return (
+      <Router>
       <Row className="main-view justify-content-md-center">
-        {selectedMovie ? (
-          <Col md={8}>
-            <MovieView  movieData={selectedMovie} onBackClick={this.onBackClick} />{" "}
-          </Col>
-        ) : (
-          movies.map(movie => (
-            <Col md={3}>
-              <MovieCard
-                key={movie._id}
-                movieData={movie}
-                onMovieClick={newSelectedMovie => {
-                  this.setSelectedMovie(newSelectedMovie);
-                }}
-              />
+        <Route exact path ="/" render={()=>{
+          return movies.map(movie => (
+            <Col md={3} key={movie._id}>
+                <MovieCard movieData={movie}/>
             </Col>
-          ))
-        )}
-        <Button variant="primary" className='primary-btn' onClick={()=> this.onLoggedOut()}><span className='text-color'>Logout</span></Button>
-      </Row>
+            ))
+        }} />
+        <Route path="/movies/:movieId" render={({match})=>{
+          return <Col md={8}>
+            <MovieView  movieData={movies.find(movie => movie._id === match.params.movieId)} />
+          </Col>
+        }}/>
+     
+        <Row><Col>
+        <Button variant="info" className='primary-btn' onClick={()=> this.onLoggedOut()}><span className='text-color'>Logout</span></Button>
+        </Col></Row>
+        
+        </Row></Router>
     );
   }
 }
