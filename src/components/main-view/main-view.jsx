@@ -58,7 +58,7 @@ export default class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
-        // assign result to the state
+        // assigning the result to the state
         this.setState({ movies: response.data });
       })
       .catch(function (error) {
@@ -84,16 +84,14 @@ export default class MainView extends React.Component {
   };
 
   render() {
-    const { movies, selectedMovie, register } = this.state; // same as const movies = this.state.movies & const selecteMovie = this.state.selectedMovie (ES6 object destructuring)
+    const { user, movies, selectedMovie, register } = this.state; // same as const movies = this.state.movies & const selecteMovie = this.state.selectedMovie (ES6 object destructuring)
     if (register)
       return (
         <RegistrationView
           onRegister={register => this.onRegister(register)}
-          toggleRegister={this.toggleRegister}
-          onBackClick={this.onBackClick}
-        />
+          toggleRegister={this.toggleRegister} />
       );
-    if (!this.state.user)
+    if (!user)
       return ( <Row><Col>
         <LoginView
           onLoggedIn={user => this.onLoggedIn(user)}
