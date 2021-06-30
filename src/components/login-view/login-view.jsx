@@ -29,10 +29,10 @@ export function LoginView(props) {
         })
         .then(response => {
           const data = response.data;
-           props.onLoggedIn(data);
+          props.onLoggedIn(data);
         })
         .catch(e => {
-          alert('wrong username or password');
+          alert("wrong username or password");
           console.log("no such user");
         });
     }
@@ -45,16 +45,19 @@ export function LoginView(props) {
 
     if (username.trim().length < 5) {
       usernameError.usernameShort = "Username must be at least 5 characters";
+      alert(usernameError.usernameShort);
       isValid = false;
     }
 
     if (password.trim().length === 0) {
       passwordError.passwordRequired = "Password is required";
+      alert(passwordError.passwordRequired);
       isValid = false;
     }
 
     if (password.trim().length < 6) {
       passwordError.passwordMissing = "Password must be at least 6 characters";
+      alert(passwordError.passwordMissing)
       isValid = false;
     }
 
@@ -66,7 +69,7 @@ export function LoginView(props) {
   return (
     <Form className="login-form">
       <Form.Group controlId="formUsername">
-        <Form.Label >Username: </Form.Label>
+        <Form.Label>Username: </Form.Label>
         <Form.Control type="text" required onChange={e => setUsername(e.target.value)} />
       </Form.Group>
       <Form.Group controlId="formPassword">
@@ -76,13 +79,17 @@ export function LoginView(props) {
       <Button className="super-button" variant="outline-info" type="submit" onClick={handleSubmit}>
         SUBMIT
       </Button>
-      <Button className="super-button" variant="outline-info" type="secondary" onClick={props.toggleRegister}>
+      <Button
+        className="super-button"
+        variant="outline-info"
+        type="secondary"
+        onClick={props.toggleRegister}
+      >
         REGISTER
       </Button>
     </Form>
   );
 }
-
 
 LoginView.propTypes = {
   user: PropTypes.shape({
