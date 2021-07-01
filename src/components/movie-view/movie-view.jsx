@@ -43,9 +43,15 @@ export class MovieView extends React.Component {
             <span className="value">{movieData.Genre.Description}</span>
           </Card.Text>
 
-          <Button className="super-button" variant="outline-info" onClick={onBackClick}>
-            BACK
-          </Button>
+          <Link to={`/directors/${movie.director}`}>
+                   <Button variant="link"></Button>
+               </Link>
+               <Link to={`/genres/${movie.genre}`}>
+                 <Button variant="link"></Button>
+               </Link>
+               <Link to={`/`}>
+                   <Button variant="link">Back</Button>
+               </Link>
         </Card.Body>
       </Card>
     );
