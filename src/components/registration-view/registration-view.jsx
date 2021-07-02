@@ -5,7 +5,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Form, Alert, Button } from "react-bootstrap";
 
-
 import "./registration-view.scss";
 
 export function RegistrationView(props) {
@@ -13,36 +12,37 @@ export function RegistrationView(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
-  const [usernameError, setUsernameError] = useState({});
-  const [passwordError, setPasswordError] = useState({});
-  const [emailError, setEmailError] = useState({});
-  const [regRes, setRegRes] = useState(null);
 
   const handleSubmit = e => {
     e.preventDefault();
+    let setisValid = formValidation();
     console.log(username, password, email, birthdate);
-    // props.onRegister(username);
+   
 
-    const isValid = formValidation();
-    if (isValid) {
+    if (setisValid) {
       axios
-        .post("https://cf-my-movie-app.herokuapp.com/users", {
+        .post("https://cf-my-movie-app.herokuapp.com/login", {
           Username: username,
           Password: password,
-          Email: email
-          // birthdate: birthdate
+          Email: email,
+          Birthdate: birthdate
         })
         .then(response => {
           const data = response.data;
           console.log(data);
-          setRegRes({ text: "registration successful", variant: "success" });
+          window.open("/", "_self");
+
+          alert("Registration successful");
         })
         .catch(e => {
-          setRegRes({ text: "registration error", variant: "danger" });
+          if (error.response && error.response.status === 400) {
+            alert("The value you entered is not valid.");
+          }
+
           console.log("error in user registration", e);
         });
       console.log(username, password, email, birthdate);
-      props.onRegister(username);
+      props.onRegister(username, password, email, birthdate);
     }
   };
 
@@ -50,108 +50,97 @@ export function RegistrationView(props) {
     const usernameError = {};
     const passwordError = {};
     const emailError = {};
+    const birthdateError = {};
     let isValid = true;
 
     if (username.trim().length < 5) {
       usernameError.usernameShort = "Username must be at least 5 characters";
       isValid = false;
-    }
-
-    if (password.trim().length === 0) {
+    } else if (password.trim().length === 0) {
       passwordError.passwordMissing = "Password is required";
       isValid = false;
-    }
-
-    if (password.trim().length < 6) {
+    } else if (password.trim().length < 6) {
       passwordError.passwordMissing = "Password must be at least 6 characters";
       isValid = false;
-    }
-
-    if (!email.includes(".") && !email.includes("@")) {
+    } else if (!email.includes(".") && !email.includes("@")) {
       emailError.notEmail = "Enter a valid email";
       isValid = false;
+    } else if (birthdate === "") {
+      birthdateError.noBirthdate = "Please enter a birthdate";
+      isValid=false;
     }
 
-    setUsernameError(usernameError);
-    setPasswordError(passwordError);
-    setEmailError(emailError);
+    
     return isValid;
   };
 
   return (
-      <Form className="registration-form">
-          {regRes && (
-        <Alert variant={regRes.variant}>
-          <Alert.Heading>{regRes.text}</Alert.Heading>
-        </Alert>
-      )}
-        <h1>
-          <span className="font-weight-bold">myFlixApp</span>
-        </h1>
-        <h2 className="text-center"> Sign up</h2>
-        <Form.Group controlId="formUsername">
-          <Form.Label>Username:</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="5 characters min"
-            required
-            value={username}
-            onChange={e => setUsername(e.target.value)}
-          />
-          <Form.Control.Feedback type="invalid">
-            Please provide a valid username{" "}
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group controlId="formPassword">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="6 characters min"
-            required
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-          <Form.Control.Feedback type="invalid">
-            Please provide a valid password.
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group controlId="formEmail">
-          <Form.Label>Email:</Form.Label>
-          <input
-            type="email"
-            placeholder="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Form.Group controlId="formBirthdate">
-          <Form.Label>Birthdate:</Form.Label>
-          <input
-            type="date"
-            placeholder="00-00-0000"
-            value={birthdate}
-            onChange={e => setBirthdate(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <span>
-          <Button className="super-button" variant="outline-info" type="submit" onClick={handleSubmit}>
-            SUBMIT
-          </Button>
-          <Button className="super-button" variant="outline-info" onClick={props.toggleRegister}>
-            LOGIN
-          </Button>
-        </span>
-      </Form>
-    
+    <Form className="registration-form" onSubmit={handleSubmit}>
+      <Form.Group controlId="formUsername">
+        <Form.Label>Username:</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="enter username"
+          required
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+        />
+        <Form.Control.Feedback type="invalid">
+          Please provide a valid username
+        </Form.Control.Feedback>
+      </Form.Group>
+      <Form.Group controlId="formPassword">
+        <Form.Label>Password:</Form.Label>
+        <Form.Control
+          type="password"
+          placeholder="enter password"
+          required
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
+        <Form.Control.Feedback type="invalid">
+          Please provide a valid password.
+        </Form.Control.Feedback>
+      </Form.Group>
+      <Form.Group controlId="formEmail">
+        <Form.Label>Email:</Form.Label>
+        <input
+          type="email"
+          placeholder="enter email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+        />
+         <Form.Control.Feedback type="invalid">
+          Please provide a valid email.
+        </Form.Control.Feedback>
+      </Form.Group>
+      <Form.Group controlId="formBirthdate">
+        <Form.Label>Birthdate:</Form.Label>
+        <input
+          type="date"
+          placeholder="00-00-0000"
+          value={birthdate}
+          onChange={e => setBirthdate(e.target.value)}
+          required
+        />
+      </Form.Group>
+      <span>
+        <Button type="submit">Submit</Button>
+        {' '}
+        <Button variant="secondary" onClick={history.goBack}>Back</Button>
+      </span>
+     
+    </Form>
   );
 }
 
 RegistrationView.propTypes = {
   user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Brithdate:PropTypes.string.isRequired
   }),
-  onRegister: PropTypes.func.isRequired
+  
 };
