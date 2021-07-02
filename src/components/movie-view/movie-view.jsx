@@ -23,36 +23,39 @@ export class MovieView extends React.Component {
             <span className="value">{movieData.Title}</span>
           </Card.Title>
           <Card.Subtitle>
-            <span>YEAR: {movieData.Release_Year}</span>
+            <span>Year: {movieData.Release_Year}</span>
           </Card.Subtitle>
           <Card.Text>
             <span className="value">{movieData.Description}</span>
           </Card.Text>
 
+         
+         
+          <Card.Subtitle><Link to={`/directors/${movieData.Director.Name}`}>
+            <Button variant="link">Director</Button>
+          </Link>
+          </Card.Subtitle> 
+
+        
           <Card.Subtitle>
-            <span>DIRECTOR: {movieData.Director.Name}</span>
+            
+            <Link to={`/genres/${movieData.Genre.Name}`}>
+                 <Button variant="link">Genre</Button>
+               </Link>
           </Card.Subtitle>
 
-          <Card.Text>
-            <span className="value">{`Bio: ${movieData.Director.Bio} Birth: ${movieData.Director.Birth}`}</span>
-          </Card.Text>
-          <Card.Subtitle>
-            <span>GENRE: {movieData.Genre.Name}</span>
-          </Card.Subtitle>
-          <Card.Text>
-            <span className="value">{movieData.Genre.Description}</span>
-          </Card.Text>
+          <Card.Subtitle><Col>
+          <Link to={`/movies/${movieData._id}`}>
+            <Button block variant="success" onClick={() => this.handleAdd(movie)}>Add to favorites</Button>
+          </Link></Col>
+          <Col> <Link to={`/movies/${movieData._id}`}>
+            <Button block variant="danger" onClick={() => this.handleRemove(movie)}>Remove from favorites</Button>
+          </Link></Col>
 
-          <Link to={`/directors/${movie.director}`}>
-                   <Button variant="link"></Button>
-               </Link>
-               <Link to={`/genres/${movie.genre}`}>
-                 <Button variant="link"></Button>
-               </Link>
-               <Link to={`/`}>
-                   <Button variant="link">Back</Button>
-               </Link>
+          </Card.Subtitle>
+          <Button variant="secondary" size="sm" onClick={() => { onBackClick(null); }}>Back</Button>
         </Card.Body>
+       
       </Card>
     );
   }
