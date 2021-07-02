@@ -1,25 +1,22 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-
+import './genre-view.scss';
 export class GenreView extends React.Component {
   render() {
-    const { genresData } = this.props;
+    const { genreData, onBackClick } = this.props;
 
     return (
       <div className="genres-view">
         <Card border="dark" className="mb-3" className="mt-4">
           <Card.Body>
             <Card.Title>
-              <span className="text-primary"></span> {genresData.Name}
+              <span className="text-primary"></span> {genreData.Name}
             </Card.Title>
             <Card.Text>
               <span className="text-primary"></span>
-              {genresData.Description}
+              {genreData.Description}
             </Card.Text>
-            <Link to={`/`}>
-              <Button variant="outline-info">Back</Button>
-            </Link>
+            <Button variant="secondary" size="sm" onClick={() => { onBackClick(null); }}>Back</Button>
           </Card.Body>
         </Card>
       </div>
