@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import './director-view.scss';
 
@@ -15,7 +16,14 @@ export class DirectorView extends React.Component{
              <Card.Title><span className='text-primary'></span> {directorData.Name}</Card.Title>
             <Card.Text><span className='text-primary'></span>{directorData.Bio}</Card.Text>
             <Card.Text><span className='text-primary'></span>{directorData.Birth}</Card.Text>
-            <Button variant="secondary" size="sm" onClick={() => { onBackClick(null); }}>Back</Button>
+            <Link to="/movies">
+            <Button
+              variant="secondary"
+              size="sm"  
+            >
+              Back
+          </Button>
+          </Link>
              </Card.Body>
              </Card>
     
