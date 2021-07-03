@@ -12,9 +12,9 @@ export class DirectorView extends React.Component{
                
             <Card border="dark" className="mb-3" className="mt-4">
              <Card.Body>
-             <Card.Title><span className='text-primary'></span> {directorData.Director.Name}</Card.Title>
-            <Card.Text><span className='text-primary'></span>{directorData.Director.Bio}</Card.Text>
-            <Card.Text><span className='text-primary'></span>{directorData.Director.Birth}</Card.Text>
+             <Card.Title><span className='text-primary'></span> {directorData.Name}</Card.Title>
+            <Card.Text><span className='text-primary'></span>{directorData.Bio}</Card.Text>
+            <Card.Text><span className='text-primary'></span>{directorData.Birth}</Card.Text>
             <Button variant="secondary" size="sm" onClick={() => { onBackClick(null); }}>Back</Button>
              </Card.Body>
              </Card>
