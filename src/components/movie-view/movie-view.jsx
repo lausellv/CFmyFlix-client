@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, Button } from "react-bootstrap";
+import { Col, Card, Button } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
@@ -13,8 +13,9 @@ export class MovieView extends React.Component {
   }
 
   render() {
-    const { movieData, onBackClick } = this.props;
+    const { movieData} = this.props;
     console.log(movieData);
+
     return (
       <Card border="light" className="mt-3">
         <Card.Img variant="top" src={movieData.ImagePath} />
@@ -29,33 +30,39 @@ export class MovieView extends React.Component {
             <span className="value">{movieData.Description}</span>
           </Card.Text>
 
-         
-         
-          <Card.Subtitle><Link to={`/directors/${movieData.Director.Name}`}>
-            <Button variant="link">Director</Button>
-          </Link>
-          </Card.Subtitle> 
-
-        
           <Card.Subtitle>
-            
+            <Link to={`/directors/${movieData.Director.Name}`}>
+              <Button variant="link">Director</Button>
+            </Link>
+          </Card.Subtitle>
+
+          <Card.Subtitle>
             <Link to={`/genres/${movieData.Genre.Name}`}>
-                 <Button variant="link">Genre</Button>
-               </Link>
+              <Button variant="link">Genre</Button>
+            </Link>
           </Card.Subtitle>
 
-          <Card.Subtitle><Col>
-          <Link to={`/movies/${movieData._id}`}>
-            <Button block variant="success" onClick={() => this.handleAdd(movie)}>Add to favorites</Button>
-          </Link></Col>
-          <Col> <Link to={`/movies/${movieData._id}`}>
-            <Button block variant="danger" onClick={() => this.handleRemove(movie)}>Remove from favorites</Button>
-          </Link></Col>
-
+          <Card.Subtitle>
+            <Col>
+                <Button block variant="success" onClick={() => this.handleAdd(movieData)}>
+                  Add to favorites
+                </Button>
+            </Col>
+            <Col>
+                <Button block variant="danger" onClick={() => this.handleRemove(movieData)}>
+                  Remove from favorites
+                </Button>
+            </Col>
           </Card.Subtitle>
-          <Button variant="secondary" size="sm" onClick={() => { onBackClick(null); }}>Back</Button>
+          <Link to="/movies">
+            <Button
+              variant="secondary"
+              size="sm"  
+            >
+              Back
+          </Button>
+          </Link>
         </Card.Body>
-       
       </Card>
     );
   }
