@@ -126,9 +126,17 @@ export function RegistrationView(props) {
         />
       </Form.Group>
       <span>
+        
         <Button type="submit">Submit</Button>
         {' '}
-        <Button variant="secondary" onClick={history.goBack}>Back</Button>
+        <Link to="/login">
+            <Button
+              variant="secondary"
+              size="sm"  
+            >
+              Back to login
+          </Button>
+          </Link>
       </span>
      
     </Form>
