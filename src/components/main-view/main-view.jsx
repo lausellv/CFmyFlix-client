@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
 
-import { Row, Col, Button, Container, Navbar } from "react-bootstrap";
+import { Nav, Row, Col, Button, Container, Navbar, Form, FormControl } from "react-bootstrap";
 
 import { LoginView } from "../login-view/login-view";
 import { RegistrationView } from "../registration-view/registration-view";
@@ -10,6 +10,8 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { GenreView } from "../genre-view/genre-view";
 import { DirectorView } from "../director-view/director-view";
+// import {ProfileView} from "../profile-view/profile-view";
+
 export default class MainView extends React.Component {
   constructor(props) {
     super(props);
@@ -112,17 +114,29 @@ export default class MainView extends React.Component {
                 </Link>
               </ul>
             </Navbar>
+            <Navbar bg="primary" variant="dark" style={{marginTop: 70}}>
+              <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+              <Nav className="mr-auto">
+                <Nav.Link href="#home">Home</Nav.Link>
+                <Nav.Link href="#features">Features</Nav.Link>
+                <Nav.Link href="#pricing">Pricing</Nav.Link>
+              </Nav>
+              <Form inline>
+                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                <Button variant="outline-light">Search</Button>
+              </Form>
+            </Navbar>
           </Container>
           <Route
             exact
             path="/"
             render={() => {
-              if (!user) return;
-
-              <Col>
-                <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-              </Col>;
-              
+              if (!user)
+                return (
+                  <Col>
+                    <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                  </Col>
+                );
               if (movies.length === 0) return <div className="main-view" />;
               return movies.map(movie => (
                 <Col md={3} key={movie._id}>
@@ -132,29 +146,34 @@ export default class MainView extends React.Component {
             }}
           />
 
-<Route path="/register" render={() => {
-            if (user) return <Redirect to="/" />
-            return <Col>
-              <RegistrationView />
-            </Col>
-          }} />
-
           <Route
-            path="/movies"
+            path="/login"
             render={() => {
-              if (movies.length === 0) return <div className="main-view" />;
-              return movies.map(movie => (
-                <Col md={3} key={movie._id}>
-                  <MovieCard movieData={movie} />
+              if (user) return <Redirect to="/" />;
+              return (
+                <Col>
+                  <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
                 </Col>
-              ));
+              );
             }}
           />
 
           <Route
+            path="/register"
+            render={() => {
+              if (user) return <Redirect to="/" />;
+              return (
+                <Col>
+                  <RegistrationView />
+                </Col>
+              );
+            }}
+          />
+
+          <Route
+            exact
             path="/movies/:movieId"
             render={({ match, history }) => {
-              if (movies.length === 0) return <div className="main-view" />;
               return (
                 <Col md={8}>
                   <MovieView
@@ -165,9 +184,17 @@ export default class MainView extends React.Component {
               );
             }}
           />
-
-     
-
+          <Route
+            exact
+            path="/movies"
+            render={() => {
+              return movies.map(movie => (
+                <Col md={3} key={movie._id}>
+                  <MovieCard movieData={movie} />
+                </Col>
+              ));
+            }}
+          />
           <Route
             path="/directors/:name"
             render={({ match }) => {
@@ -182,7 +209,7 @@ export default class MainView extends React.Component {
                 <Col md={8}>
                   <DirectorView
                     directorData={
-                      movies.find(movie => movie.Director.Name === match.params.directorId).Director
+                      movies.find(movie => movie.Director.Name === match.params.name).Director
                     }
                     onBackClick={() => history.goBack()}
                   />
@@ -190,17 +217,26 @@ export default class MainView extends React.Component {
               );
             }}
           />
-<Route path="movies/genres/:name" render={({ match, history }) => {
-            if (!user) return <Col>
-              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-            </Col>
-            if (movies.length === 0) return <div className="main-view" />;
-            return <Col md={8}>
-              <GenreView genresData={movies.find(movie => movie.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
-            </Col>
-          }
-          } />
-      
+          <Route
+            path="/movies/genres/:name"
+            render={({ match, history }) => {
+              if (!user)
+                return (
+                  <Col>
+                    <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                  </Col>
+                );
+              if (movies.length === 0) return <div className="main-view" />;
+              return (
+                <Col md={8}>
+                  <GenreView
+                    genresData={movies.find(movie => movie.Genre.Name === match.params.name).Genre}
+                    onBackClick={() => history.goBack()}
+                  />
+                </Col>
+              );
+            }}
+          />
         </Row>
       </Router>
     );
