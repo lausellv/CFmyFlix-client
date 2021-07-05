@@ -6,7 +6,7 @@ import './director-view.scss';
 
 export class DirectorView extends React.Component{
     render(){
-        const {directorData, onBackClick } = this.props;
+        const {directorData} = this.props;
 
         return(
             <div className="director-view">
@@ -18,8 +18,8 @@ export class DirectorView extends React.Component{
             <Card.Text><span className='text-primary'></span>{directorData.Birth}</Card.Text>
             <Link to="/movies">
             <Button
-              variant="secondary"
-              size="sm"  
+              variant="outline-info"
+              size="m"  
             >
               Back
           </Button>
@@ -40,5 +40,4 @@ DirectorView.propTypes = {
             Bio: PropTypes.string.isRequired,
             Birth: PropTypes.string.isRequired
           }).isRequired,
-    onBackClick: PropTypes.func.isRequired
   };
