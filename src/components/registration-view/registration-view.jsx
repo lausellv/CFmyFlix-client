@@ -17,7 +17,6 @@ export function RegistrationView(props) {
     e.preventDefault();
     let setisValid = formValidation();
     console.log(username, password, email, birthdate);
-   
 
     if (setisValid) {
       axios
@@ -67,10 +66,9 @@ export function RegistrationView(props) {
       isValid = false;
     } else if (birthdate === "") {
       birthdateError.noBirthdate = "Please enter a birthdate";
-      isValid=false;
+      isValid = false;
     }
 
-    
     return isValid;
   };
 
@@ -111,9 +109,7 @@ export function RegistrationView(props) {
           onChange={e => setEmail(e.target.value)}
           required
         />
-         <Form.Control.Feedback type="invalid">
-          Please provide a valid email.
-        </Form.Control.Feedback>
+        <Form.Control.Feedback type="invalid">Please provide a valid email.</Form.Control.Feedback>
       </Form.Group>
       <Form.Group controlId="formBirthdate">
         <Form.Label>Birthdate:</Form.Label>
@@ -126,19 +122,13 @@ export function RegistrationView(props) {
         />
       </Form.Group>
       <span>
-        
-        <Button type="submit">Submit</Button>
-        {' '}
+        <Button type="submit" variant="outline-info">Submit</Button>{" "}
         <Link to="/login">
-            <Button
-              variant="secondary"
-              size="sm"  
-            >
-              Back to login
+          <Button variant="outline-info" size="m">
+            Back to login
           </Button>
-          </Link>
+        </Link>
       </span>
-     
     </Form>
   );
 }
@@ -148,7 +138,6 @@ RegistrationView.propTypes = {
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Brithdate:PropTypes.string.isRequired
-  }),
-  
+    Brithdate: PropTypes.string.isRequired
+  })
 };
