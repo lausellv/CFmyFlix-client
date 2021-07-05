@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
 
-import { Nav, Row, Col, Button, Container, Navbar, Form, FormControl } from "react-bootstrap";
+import { Row, Col, Button, Container, Navbar} from "react-bootstrap";
 
 import { LoginView } from "../login-view/login-view";
 import { RegistrationView } from "../registration-view/registration-view";
@@ -89,23 +89,28 @@ export default class MainView extends React.Component {
     return (
       <Router>
         <Row className="main-view justify-content-md-center">
-          <Container>
-            <Navbar bg="dark" variant="dark" fixed="top">
+          <Container style={{ marginTop: 70 }}>
+            <Navbar
+              style={{ paddingTop: 20 }}
+              bg="dark"
+              variant="info"
+              fixed="top"
+            >
               <Navbar.Brand>Welcome to MyFlix!</Navbar.Brand>
               <ul>
-                <Link to={`/`}>
-                  <Button variant="link" className="navbar-link text-light">
+                <Link variant="info" to={`/`}>
+                  <Button variant="outline-info" className="navbar-link text-light">
                     Movies
                   </Button>
                 </Link>
                 <Link to={`/users/${user}`}>
-                  <Button variant="link" className="navbar-link text-light">
+                  <Button variant="outline-info" className="navbar-link text-light">
                     Profile
                   </Button>
                 </Link>
                 <Link to={`/`}>
                   <Button
-                    variant="link"
+                    variant="outline-info"
                     className="navbar-link text-light"
                     onClick={() => this.onLoggedOut()}
                   >
@@ -114,18 +119,7 @@ export default class MainView extends React.Component {
                 </Link>
               </ul>
             </Navbar>
-            <Navbar bg="primary" variant="dark" style={{marginTop: 70}}>
-              <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-              <Nav className="mr-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
-              </Nav>
-              <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-light">Search</Button>
-              </Form>
-            </Navbar>
+      
           </Container>
           <Route
             exact
@@ -218,8 +212,8 @@ export default class MainView extends React.Component {
             }}
           />
           <Route
-            path="/movies/genres/:name"
-            render={({ match, history }) => {
+            path="/genres/:name"
+            render={({ match}) => {
               if (!user)
                 return (
                   <Col>
@@ -228,9 +222,10 @@ export default class MainView extends React.Component {
                 );
               if (movies.length === 0) return <div className="main-view" />;
               return (
+              
                 <Col md={8}>
                   <GenreView
-                    genresData={movies.find(movie => movie.Genre.Name === match.params.name).Genre}
+                    genreData={movies.find(movie => movie.Genre.Name === match.params.name).Genre}
                     onBackClick={() => history.goBack()}
                   />
                 </Col>
