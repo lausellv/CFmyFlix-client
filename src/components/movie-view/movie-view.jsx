@@ -32,32 +32,29 @@ export class MovieView extends React.Component {
 
           <Card.Subtitle>
             <Link to={`/directors/${movieData.Director.Name}`}>
-              <Button variant="link">Director</Button>
+              <Button style={{margin:10}} variant="outline-info">Director</Button>
             </Link>
-          </Card.Subtitle>
-
-          <Card.Subtitle>
+         
             <Link to={`/genres/${movieData.Genre.Name}`}>
-              <Button variant="link">Genre</Button>
+              <Button style={{margin:15}} variant="outline-info">Genre</Button>
             </Link>
           </Card.Subtitle>
 
           <Card.Subtitle>
             <Col>
-                <Button block variant="success" onClick={() => this.handleAdd(movieData)}>
+                <Button  block variant="outline-success" onClick={() => this.handleAdd(movieData)}>
                   Add to favorites
                 </Button>
-            </Col>
-            <Col>
-                <Button block variant="danger" onClick={() => this.handleRemove(movieData)}>
+           
+                <Button  block variant="outline-danger" onClick={() => this.handleRemove(movieData)}>
                   Remove from favorites
                 </Button>
             </Col>
           </Card.Subtitle>
           <Link to="/movies">
             <Button
-              variant="secondary"
-              size="sm"  
+              variant="outline-info" style={{margin:15}}
+              size="m"  
             >
               Back
           </Button>
