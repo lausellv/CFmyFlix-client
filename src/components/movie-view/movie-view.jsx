@@ -23,6 +23,7 @@ export class MovieView extends React.Component {
           <Card.Title>
             <span className="value">{movieData.Title}</span>
           </Card.Title>
+          <Card border="light" className="mt-3">
           <Card.Subtitle>
             <span>Year: {movieData.Release_Year}</span>
           </Card.Subtitle>
@@ -32,11 +33,11 @@ export class MovieView extends React.Component {
 
           <Card.Subtitle>
             <Link to={`/directors/${movieData.Director.Name}`}>
-              <Button style={{margin:10}} variant="outline-info">Director</Button>
+              <Button style={{marginLeft:15}} variant="outline-info">Director</Button>
             </Link>
          
             <Link to={`/genres/${movieData.Genre.Name}`}>
-              <Button style={{margin:15}} variant="outline-info">Genre</Button>
+              <Button style={{margin:10}} variant="outline-info">Genre</Button>
             </Link>
           </Card.Subtitle>
 
@@ -59,6 +60,7 @@ export class MovieView extends React.Component {
               Back
           </Button>
           </Link>
+          </Card>
         </Card.Body>
       </Card>
     );
