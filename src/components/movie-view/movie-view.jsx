@@ -12,6 +12,15 @@ export class MovieView extends React.Component {
     this.state = {};
   }
 
+  handleRemove = ()=>{
+    console.log('removed')
+  }
+
+  handleAdd = () => {
+    console.log('handled')
+  }
+
+
   render() {
     const { movieData} = this.props;
     console.log(movieData);
