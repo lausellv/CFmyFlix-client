@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
 
-import { Row, Col, Button, Container, Navbar} from "react-bootstrap";
+import { Row, Col, Button, Container, Navbar } from "react-bootstrap";
 
 import { LoginView } from "../login-view/login-view";
 import { RegistrationView } from "../registration-view/registration-view";
@@ -10,8 +10,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { GenreView } from "../genre-view/genre-view";
 import { DirectorView } from "../director-view/director-view";
-// import {ProfileView} from "../profile-view/profile-view";
-
+import { ProfileView } from "../profile-view/profile-view";
 export default class MainView extends React.Component {
   constructor(props) {
     super(props);
@@ -84,18 +83,13 @@ export default class MainView extends React.Component {
   }
 
   render() {
-    const { user, movies, history } = this.state;
-
+    const { user, movies, history, users } = this.state;
+console.log(user, users, 'users=====');
     return (
       <Router>
         <Row className="main-view justify-content-md-center">
           <Container style={{ marginTop: 70 }}>
-            <Navbar
-              style={{ paddingTop: 20 }}
-              bg="dark"
-              variant="info"
-              fixed="top"
-            >
+            <Navbar style={{ paddingTop: 20 }} bg="dark" variant="info" fixed="top">
               <Navbar.Brand>Welcome to MyFlix!</Navbar.Brand>
               <ul>
                 <Link variant="info" to={`/`}>
@@ -119,7 +113,6 @@ export default class MainView extends React.Component {
                 </Link>
               </ul>
             </Navbar>
-      
           </Container>
           <Route
             exact
@@ -147,6 +140,17 @@ export default class MainView extends React.Component {
               return (
                 <Col>
                   <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                </Col>
+              );
+            }}
+          />
+
+          <Route
+            path="/users/:username"
+            render={() => {
+              return (
+                <Col>
+                  <ProfileView movies={movies} />
                 </Col>
               );
             }}
@@ -213,7 +217,7 @@ export default class MainView extends React.Component {
           />
           <Route
             path="/genres/:name"
-            render={({ match}) => {
+            render={({ match }) => {
               if (!user)
                 return (
                   <Col>
@@ -222,7 +226,6 @@ export default class MainView extends React.Component {
                 );
               if (movies.length === 0) return <div className="main-view" />;
               return (
-              
                 <Col md={8}>
                   <GenreView
                     genreData={movies.find(movie => movie.Genre.Name === match.params.name).Genre}
