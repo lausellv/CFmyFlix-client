@@ -119,10 +119,11 @@ console.log(user, users, 'users=====');
             path="/"
             render={() => {
               if (!user)
-                return (
+                return (<Row>
                   <Col>
                     <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
                   </Col>
+                  </Row>
                 );
               if (movies.length === 0) return <div className="main-view" />;
               return movies.map(movie => (
@@ -130,6 +131,17 @@ console.log(user, users, 'users=====');
                   <MovieCard movieData={movie} />
                 </Col>
               ));
+            }}
+          />
+             <Route
+            path="/register"
+            render={() => {
+               if (user) return <Redirect to="/" />;
+              return (
+                <Col>
+                  <RegistrationView />
+                </Col>
+              );
             }}
           />
 
@@ -156,17 +168,7 @@ console.log(user, users, 'users=====');
             }}
           />
 
-          <Route
-            path="/register"
-            render={() => {
-              if (user) return <Redirect to="/" />;
-              return (
-                <Col>
-                  <RegistrationView />
-                </Col>
-              );
-            }}
-          />
+       
 
           <Route
             exact
@@ -195,7 +197,7 @@ console.log(user, users, 'users=====');
           />
           <Route
             path="/directors/:name"
-            render={({ match }) => {
+            render={({ match, history }) => {
               if (!user)
                 return (
                   <Col>
@@ -217,7 +219,7 @@ console.log(user, users, 'users=====');
           />
           <Route
             path="/genres/:name"
-            render={({ match }) => {
+            render={({ match , history}) => {
               if (!user)
                 return (
                   <Col>
