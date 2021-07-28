@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Col, Card, Button } from "react-bootstrap";
+import axios from "axios";
 
 import { Link } from "react-router-dom";
 
@@ -8,10 +9,8 @@ import "./movie-view.scss";
 import axios from "axios";
 
 export class MovieView extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+ 
+  
 
   handleRemove = () => {
     console.log("removed");
