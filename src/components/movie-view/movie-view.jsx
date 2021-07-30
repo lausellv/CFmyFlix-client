@@ -9,24 +9,38 @@ import "./movie-view.scss";
 import axios from "axios";
 
 export class MovieView extends React.Component {
-  handleRemove = movie => {
+
+ handleRemove = (movie) => {
     const token = localStorage.getItem("token");
-    const user = localStorage.getItem("user");
+    const url =
+      "https://cf-my-movie-app.herokuapp.com/users/" +
+      localStorage.getItem("user") +
+      "/movies/" +
+      movie._id;
     axios
-      .delete("https://cf-my-movie-app.herokuapp.com/users/${user}/movies/${movie.Title}", {
+      .delete(url, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
         console.log(response);
-        alert(`${movie.Title}  has been removed from favorites.`);
+       
+        
+        alert(movie.Title + " has been removed from your Favorites.");
       });
-  };
+  }
 
-  handleAdd = movie => {
+
+  handleAdd = (movie) => {
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
+    const url =
+    "https://cf-my-movie-app.herokuapp.com/users/" +
+    localStorage.getItem("user") +
+    "/movies/" +
+    movie._id;
+    
     axios
-      .post("https://cf-my-movie-app.herokuapp.com/users/${user}/movies/${movie.Title}", {
+      .post(url, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
