@@ -40,8 +40,9 @@ export class ProfileView extends React.Component {
       })
       .then(response => {
         // Assign the result to the state
-        console.log("getUser====", response.data);
+
         this.setState({
+          FavoriteMovies:response.data.FavoriteMovies,
           user: response.data,
           loading: false,
           Username: response.data.Username,
@@ -49,7 +50,6 @@ export class ProfileView extends React.Component {
 
         });
 
-        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -173,6 +173,7 @@ export class ProfileView extends React.Component {
       return this.state.FavoriteMovies.includes(movie._id);
     });
 
+
     if (this.state.loading) return <div className="m-85">Loading...</div>;
     return (
       <div className="userProfile" style={{ display: "flex" }}>
@@ -193,9 +194,10 @@ export class ProfileView extends React.Component {
                               <Card.Img variant="top" src={movie.ImagePath} />
                               <Card.Body>
                                 <Link to={`/movies/${movie._id}`}>
-                                  <Card.Title as="h6">{movie.Title}</Card.Title>
+                                  <Card.Title as="h5">{movie.Title}</Card.Title>
                                 </Link>
-                                <Button
+                                <Button variant="outline-danger"
+                                size='sm'
                                   className="mb-30"
                                   onClick={() => this.removeFavorite(movie)}
                                 >
@@ -291,9 +293,9 @@ export class ProfileView extends React.Component {
                   <Link to={`/users/${this.state.Username}`}>
                     <Button
                       className="mb-2"
-                      variant="success"
+                      variant="outline-success"
                       type="link"
-                      size="md"
+                      size="xs"
                       block
                       onClick={e => this.handleUpdate(e)}
                     >
@@ -308,8 +310,8 @@ export class ProfileView extends React.Component {
                 <br></br>
                 <Button
                   className="mb-2"
-                  variant="danger"
-                  size="lg"
+                  variant="outline-danger"
+                  size="xs"
                   block
                   onClick={() => this.handleDelete()}
                 >

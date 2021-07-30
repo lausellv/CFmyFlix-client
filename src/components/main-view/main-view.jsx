@@ -84,7 +84,7 @@ export default class MainView extends React.Component {
 
   render() {
     const { user, movies, history, users } = this.state;
-console.log(user, users, 'users=====');
+console.log(user)
     return (
       <Router>
         <Row className="main-view justify-content-md-center">
@@ -162,7 +162,7 @@ console.log(user, users, 'users=====');
             render={() => {
               return (
                 <Col>
-                  <ProfileView movies={movies} />
+                  <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()} />
                 </Col>
               );
             }}
