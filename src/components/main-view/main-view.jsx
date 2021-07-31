@@ -84,7 +84,7 @@ export default class MainView extends React.Component {
 
   render() {
     const { user, movies, history, users } = this.state;
-console.log(user)
+
     return (
       <Router>
         <Row className="main-view justify-content-md-center">
@@ -171,9 +171,12 @@ console.log(user)
        
 
           <Route
-            exact
-            path="/movies/:movieId"
+            exact path="/movies/:movieId"
             render={({ match, history }) => {
+              if (!user) return <Col>
+              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+            </Col>
+            if (movies.length === 0) return <div className="main-view" />;
               return (
                 <Col md={8}>
                   <MovieView
