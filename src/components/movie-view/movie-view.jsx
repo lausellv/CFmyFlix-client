@@ -9,8 +9,7 @@ import "./movie-view.scss";
 import axios from "axios";
 
 export class MovieView extends React.Component {
-
- handleRemove = (movie) => {
+  handleRemove = movie => {
     const token = localStorage.getItem("token");
     const url =
       "https://cf-my-movie-app.herokuapp.com/users/" +
@@ -23,28 +22,26 @@ export class MovieView extends React.Component {
       })
       .then(response => {
         console.log(response);
-       
-        
+
         alert(movie.Title + " has been removed from your Favorites.");
       });
-  }
+  };
 
-
-  handleAdd = (movie) => {
+  handleAdd = movie => {
     const token = localStorage.getItem("token");
+    console.log(token);
     const user = localStorage.getItem("user");
     const url =
-    "https://cf-my-movie-app.herokuapp.com/users/" +
-    localStorage.getItem("user") +
-    "/movies/" +
-    movie._id;
-    
+      "https://cf-my-movie-app.herokuapp.com/users/" +
+      user +
+      "/Movies/" +
+      movie._id;
+
     axios
       .post(url, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
-        console.log(response);
         alert(movie.Title + "has been added to favorites!");
       });
   };
