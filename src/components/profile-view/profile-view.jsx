@@ -68,7 +68,7 @@ export class ProfileView extends React.Component {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
-        console.log(response);
+     
         this.componentDidMount();
         // location.reload();
         alert(movie.Title + " has been removed from your Favorites.");
@@ -95,7 +95,7 @@ export class ProfileView extends React.Component {
 
   handleUpdate(e) {
     let token = localStorage.getItem("token");
-    // console.log({ token });
+    
     let user = localStorage.getItem("user");
     console.log(this.state);
     let setisValid = this.formValidation();
