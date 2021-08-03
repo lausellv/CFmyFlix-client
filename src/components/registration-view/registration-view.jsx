@@ -4,7 +4,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
+import { connect } from "react-redux";
+import { setUser } from "../../actions/actions";
 import "./registration-view.scss";
 
 export function RegistrationView(props) {
@@ -28,6 +29,7 @@ export function RegistrationView(props) {
         })
         .then(response => {
           const data = response.data;
+          props.setUser(data.Username);
           console.log(data);
           window.open("/", "_self");
 
@@ -133,11 +135,12 @@ export function RegistrationView(props) {
   );
 }
 
-RegistrationView.propTypes = {
-  user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-    Brithdate: PropTypes.string.isRequired
-  })
+let mapStateToProps = state => {
+  return {
+    user: state.user
+  };
 };
+
+RegistrationView.propTypes = { onChange: PropTypes.func, onClick: PropTypes.func };
+
+export default connect(mapStateToProps, { setUser })(RegistrationView);
