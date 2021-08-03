@@ -20,7 +20,7 @@ export function RegistrationView(props) {
 
     if (setisValid) {
       axios
-        .post("https://cf-my-movie-app.herokuapp.com/login", {
+        .post("https://cf-my-movie-app.herokuapp.com/users", {
           Username: username,
           Password: password,
           Email: email,
@@ -33,15 +33,13 @@ export function RegistrationView(props) {
 
           alert("Registration successful");
         })
-        .catch(e => {
+        .catch(error => {
           if (error.response && error.response.status === 400) {
             alert("The value you entered is not valid.");
           }
 
           console.log("error in user registration", e);
         });
-      console.log(username, password, email, birthdate);
-      props.onRegister(username, password, email, birthdate);
     }
   };
 

@@ -6,8 +6,8 @@ import Container from "react-bootstrap/Container";
 import { Button, Form, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Jumbotron } from "react-bootstrap";
-// import { connect } from 'react-redux';
-// import { setUser } from "../../actions/actions";
+import { connect } from 'react-redux';
+import { setUser, updateUser } from "../../actions/actions";
 // import { updateUser } from "../../actions/actions";
 import "./profile-view.scss";
 
@@ -337,4 +337,4 @@ let mapStateToProps = state => {
   };
 };
 
-export default ProfileView;
+export default connect(mapStateToProps, {setUser, updateUser})(ProfileView)
