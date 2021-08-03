@@ -6,7 +6,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 import "./movie-view.scss";
-import axios from "axios";
 
 export class MovieView extends React.Component {
   handleRemove = movie => {
