@@ -24,7 +24,6 @@ export class ProfileView extends React.Component {
       EmailError: "",
       PasswordError: "",
       BirthdateError: "",
-      user: null,
       loading: true
     };
   }
@@ -43,7 +42,7 @@ export class ProfileView extends React.Component {
 
         this.setState({
           FavoriteMovies:response.data.FavoriteMovies,
-          user: response.data,
+          // user: response.data,
           loading: false,
           Username: response.data.Username,
           Birthdate: response.data.Birthdate || new Date().toISOString().slice(0, 10),
@@ -95,7 +94,6 @@ export class ProfileView extends React.Component {
 
   handleUpdate(e) {
     let token = localStorage.getItem("token");
-    
     let user = localStorage.getItem("user");
     console.log(this.state);
     let setisValid = this.formValidation();
@@ -158,15 +156,13 @@ export class ProfileView extends React.Component {
 
   handleChange = (e) => {
     let { name, value } = e.target;
-    console.log(name, value, 'handleChange=====' );
-
     this.setState({
       [name]: value
     });
   }
 
   render() {
-    const { movies } = this.props;
+    const { user, movies } = this.props;
 
     const { UsernameError, EmailError, PasswordError, BirthdateError } = this.state;
     const FavoriteMovieList = movies.filter(movie => {
