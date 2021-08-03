@@ -1,12 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, FormControl } from "react-bootstrap";
 import axios from "axios";
+
+import Card from "react-bootstrap/Card";
+import FormControl from "react-bootstrap/FormControl";
 import Container from "react-bootstrap/Container";
-import { Button, Form, Col, Row } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
-import { Jumbotron } from "react-bootstrap";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { setUser, updateUser } from "../../actions/actions";
 // import { updateUser } from "../../actions/actions";
 import "./profile-view.scss";
@@ -41,14 +46,12 @@ export class ProfileView extends React.Component {
         // Assign the result to the state
 
         this.setState({
-          FavoriteMovies:response.data.FavoriteMovies,
+          FavoriteMovies: response.data.FavoriteMovies,
           // user: response.data,
           loading: false,
           Username: response.data.Username,
-          Birthdate: response.data.Birthdate || new Date().toISOString().slice(0, 10),
-
+          Birthdate: response.data.Birthdate || new Date().toISOString().slice(0, 10)
         });
-
       })
       .catch(function (error) {
         console.log(error);
@@ -67,7 +70,6 @@ export class ProfileView extends React.Component {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
-     
         this.componentDidMount();
         // location.reload();
         alert(movie.Title + " has been removed from your Favorites.");
@@ -154,12 +156,12 @@ export class ProfileView extends React.Component {
     return isValid;
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     let { name, value } = e.target;
     this.setState({
       [name]: value
     });
-  }
+  };
 
   render() {
     const { user, movies } = this.props;
@@ -168,7 +170,6 @@ export class ProfileView extends React.Component {
     const FavoriteMovieList = movies.filter(movie => {
       return this.state.FavoriteMovies.includes(movie._id);
     });
-
 
     if (this.state.loading) return <div className="m-85">Loading...</div>;
     return (
@@ -192,8 +193,9 @@ export class ProfileView extends React.Component {
                                 <Link to={`/movies/${movie._id}`}>
                                   <Card.Title as="h5">{movie.Title}</Card.Title>
                                 </Link>
-                                <Button variant="outline-danger"
-                                size='sm'
+                                <Button
+                                  variant="outline-danger"
+                                  size="sm"
                                   className="mb-30"
                                   onClick={() => this.removeFavorite(movie)}
                                 >
@@ -333,4 +335,4 @@ let mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {setUser, updateUser})(ProfileView)
+export default connect(mapStateToProps, { setUser, updateUser })(ProfileView);

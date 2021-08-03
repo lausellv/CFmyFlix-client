@@ -1,12 +1,16 @@
 import React from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
-import { Row, Col, Button, Container, Navbar } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
 
 import { connect } from "react-redux";
 
-import { setMovies, setUser } from "../../actions/actions";
 import MoviesList from "../movies-list/movies-list";
+import { setMovies, setUser } from "../../actions/actions";
 import { LoginView } from "../login-view/login-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { MovieView } from "../movie-view/movie-view";
@@ -75,7 +79,6 @@ class MainView extends React.Component {
   }
 
   render() {
-  
     let { movies, user } = this.props;
 
     return (

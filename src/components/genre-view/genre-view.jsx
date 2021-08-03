@@ -1,11 +1,12 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./genre-view.scss";
 export class GenreView extends React.Component {
   render() {
-    const { genreData} = this.props;
+    const { genreData } = this.props;
 
     return (
       <div className="genre-view">
@@ -19,11 +20,7 @@ export class GenreView extends React.Component {
               {genreData.Description}
             </Card.Text>
             <Link to="/movies">
-              <Button
-                variant="outline-info"
-                size="m"
-               
-              >
+              <Button variant="outline-info" size="m">
                 Back
               </Button>
             </Link>
@@ -35,9 +32,8 @@ export class GenreView extends React.Component {
 }
 
 GenreView.propTypes = {
-   
   genreData: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired
-    }).isRequired,
+    Name: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired
+  }).isRequired
 };

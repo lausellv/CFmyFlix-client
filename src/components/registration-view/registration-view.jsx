@@ -3,7 +3,8 @@ import render from "react-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Form, Alert, Button } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 import "./registration-view.scss";
 
@@ -120,7 +121,9 @@ export function RegistrationView(props) {
         />
       </Form.Group>
       <span>
-        <Button type="submit" variant="outline-info">Submit</Button>{" "}
+        <Button type="submit" variant="outline-info">
+          Submit
+        </Button>{" "}
         <Link to="/login">
           <Button variant="outline-info" size="m">
             Back to login
