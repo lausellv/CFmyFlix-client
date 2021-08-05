@@ -20,6 +20,7 @@ export const setFilter = value => {
 
 export const setUser = value => {
   console.log('user=====', value)
+  console.log ({type: SET_USER, payload:value})
   return { type: SET_USER, payload:  value  };
 };
 
