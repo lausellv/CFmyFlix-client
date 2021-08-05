@@ -29,8 +29,9 @@ export function RegistrationView(props) {
         })
         .then(response => {
           const data = response.data;
-          props.setUser(data.Username);
-          console.log(data);
+          // confirm value of data before pushing to redux action
+          // props.setUser(data);
+          // console.log(data);
           window.open("/", "_self");
 
           alert("Registration successful");
