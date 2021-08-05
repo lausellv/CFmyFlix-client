@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
 
+
 import { Link } from "react-router-dom";
 
 import "./movie-view.scss";
