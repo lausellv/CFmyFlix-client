@@ -11,30 +11,31 @@ export const SET_VIEW = "SET_VIEW";
 
 
 export const setMovies = value => {
-  return { type: SET_MOVIES, payload: { value } };
+  return { type: SET_MOVIES, payload : value };
 };
 
 export const setFilter = value => {
-  return { type: SET_FILTER, payload: { value } };
+  return { type: SET_FILTER, payload:  value  };
 };
 
 export const setUser = value => {
-  return { type: SET_USER, payload: { value } };
+  console.log('user=====', value)
+  return { type: SET_USER, payload:  value  };
 };
 
 export const updateUser = value =>{
-  return { type: UPDATE_USER, payload: { value } };
+  return { type: UPDATE_USER, payload: value  };
 }
 
 export const setFavorites = value => {
-  return { type: SET_FAVORITES, payload: { value } };
+  return { type: SET_FAVORITES, payload:  value  };
 };
 
 export const addFavorite = value => {
-  return { type: ADD_FAVORITE, payload: { value } };
+  return { type: ADD_FAVORITE, payload:  value  };
 };
 
 export const deleteFavorite = value => {
-  return { type: DELETE_FAVORITE, payload: { value } };
+  return { type: DELETE_FAVORITE, payload:  value  };
 };
 

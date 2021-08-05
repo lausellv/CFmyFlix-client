@@ -14,6 +14,7 @@ import { setMovies, setUser } from "../../actions/actions";
 import { LoginView } from "../login-view/login-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { MovieView } from "../movie-view/movie-view";
+import { MovieCard } from "../movie-card/movie-card";
 import { GenreView } from "../genre-view/genre-view";
 import { DirectorView } from "../director-view/director-view";
 import { ProfileView } from "../profile-view/profile-view";
@@ -27,7 +28,7 @@ class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
-      this.props.setUser(localStorage.getItem("user"));
+      // this.props.setUser(localStorage.getItem("user"));
       this.getMovies(accessToken);
       this.getUsers(accessToken);
     }
@@ -36,8 +37,8 @@ class MainView extends React.Component {
 
   /*Method on which upon login in, the state is updated to such user */
   onLoggedIn(authData) {
-    console.log(authData);
-    this.props.setUser(authData.user.Username);
+    
+    this.props.setUser(authData);
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
     this.getMovies(authData.token);
@@ -64,8 +65,10 @@ class MainView extends React.Component {
   }
 
   getUsers(token) {
+    const currentUsername = localStorage.getItem("user");
+  
     axios
-      .get("https://cf-my-movie-app.herokuapp.com/users", {
+      .get("https://cf-my-movie-app.herokuapp.com/users/" + currentUsername, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
@@ -79,8 +82,8 @@ class MainView extends React.Component {
   }
 
   render() {
-    let { movies, user } = this.props;
-
+    let { movies, user, Username } = this.props;
+    // if (!movies.length > 0) return <div>Loading...</div>;
     return (
       <Router>
         <Row className="main-view justify-content-md-center">
@@ -93,7 +96,7 @@ class MainView extends React.Component {
                     Movies
                   </Button>
                 </Link>
-                <Link to={`/users/${user}`}>
+                <Link to={`/users/${Username}`}>
                   <Button variant="outline-info" className="navbar-link text-light">
                     Profile
                   </Button>
