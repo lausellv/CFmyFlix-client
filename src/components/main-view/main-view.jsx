@@ -82,7 +82,7 @@ class MainView extends React.Component {
   }
 
   render() {
-    let { movies, user, Username } = this.props;
+    let { movies, user} = this.props;
     // if (!movies.length > 0) return <div>Loading...</div>;
     return (
       <Router>
@@ -96,7 +96,7 @@ class MainView extends React.Component {
                     Movies
                   </Button>
                 </Link>
-                <Link to={`/users/${Username}`}>
+                <Link to={`/users/${user.Username}`}>
                   <Button variant="outline-info" className="navbar-link text-light">
                     Profile
                   </Button>
