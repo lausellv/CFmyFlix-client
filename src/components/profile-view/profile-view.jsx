@@ -29,12 +29,20 @@ export class ProfileView extends React.Component {
       EmailError: "",
       PasswordError: "",
       BirthdateError: "",
-      loading: true
+      loading: true,
+      user: {}
     };
   }
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
-    this.getUser(accessToken);
+    // this.getUser(accessToken);
+    let { user } = this.props;
+    if (user) {
+      this.setState({
+        loading: false,
+        user
+      });
+    }
   }
 
   getUser(token) {
@@ -168,7 +176,7 @@ export class ProfileView extends React.Component {
 
     const { UsernameError, EmailError, PasswordError, BirthdateError } = this.state;
     const FavoriteMovieList = movies.filter(movie => {
-      return this.state.FavoriteMovies.includes(movie._id);
+      return user.FavoriteMovies.includes(movie._id);
     });
 
     if (this.state.loading) return <div className="m-85">Loading...</div>;
@@ -256,7 +264,7 @@ export class ProfileView extends React.Component {
                       size="sm"
                       type="email"
                       name="Email"
-                      value={this.state.user.Email}
+                      value={this.state.Email}
                       onChange={e => this.handleChange(e)}
                       placeholder="Change Email"
                     />
@@ -329,9 +337,9 @@ ProfileView.propTypes = {
 };
 
 let mapStateToProps = state => {
+  console.log(state, "====user");
   return {
-    user: state.user,
-    movies: state.movies
+    user: state.user.user
   };
 };
 
