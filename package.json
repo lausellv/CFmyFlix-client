@@ -19,7 +19,6 @@
   "homepage": "https://github.com/lausellv/CFmyFlix-client#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "parcel": "^2.0.0-rc.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
