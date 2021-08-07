@@ -6,6 +6,9 @@
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --public-url /"
   },
+  "engines": { 
+    "node": ">= 12.0.0" 
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/lausellv/CFmyFlix-client.git"
