@@ -18,7 +18,7 @@ Provides users with access to information about different movies , directors and
 
 # Stack, Dependencies, Environment, Hosting
 ### Stack, Tools Used: 
--React
+ - React
 
 ### Dependencies:
     "axios": "^0.21.1",
