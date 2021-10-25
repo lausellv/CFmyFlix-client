@@ -1,0 +1,52 @@
+
+
+
+
+
+
+
+
+.my-flix {
+  color: #17A2B8;
+  font-weight: 400px;
+}
+
+.app-container {
+  background-color: #eeeeee;
+  height: auto;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  height: 100%;
+}
+
+.login-form h2 {
+  color: rgba(7, 7, 7, 0.973);
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 10px;
+}
+
+h1 {
+  padding-top: 40px;
+}
+
+.super-button {
+  padding: 3px 10px;
+  margin: 3px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+.registration-form {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  height: 100%;
+}
+/*# sourceMappingURL=index.3bca1e1d.css.map */
